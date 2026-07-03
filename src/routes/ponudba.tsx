@@ -1,5 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
+import project1 from "@/assets/project-1.jpg";
+import project2 from "@/assets/project-2.jpg";
+import project3 from "@/assets/project-3.jpg";
+import project4 from "@/assets/project-4.jpg";
+import project5 from "@/assets/project-5.jpg";
+import project6 from "@/assets/project-6.jpg";
 
 export const Route = createFileRoute("/ponudba")({
   head: () => ({
@@ -14,12 +20,12 @@ export const Route = createFileRoute("/ponudba")({
 });
 
 const SERVICES = [
-  { n: "01", t: "Kuhinje po meri", d: "Od zasnove do vgradnje. Masivne fronte, ročno kovani okovi, popolna integracija aparatov." },
-  { n: "02", t: "Mize in klopi", d: "Jedilne mize, pisalne mize, klopi — iz enotnih plošč masivnega lesa ali živih robov." },
-  { n: "03", t: "Vgradne omare", d: "Od stene do stene, prilagojene arhitekturi prostora. Notranjost po vaših navadah." },
-  { n: "04", t: "Stopnice", d: "Konzolne, lebdeče, klasične. V kombinaciji s kovino ali steklom." },
-  { n: "05", t: "Notranja oprema poslovnih prostorov", d: "Recepcije, restavracije, hoteli. Rešitve, ki dvignejo prostor." },
-  { n: "06", t: "Restavriranje", d: "Skrb za stare kose, ki si zaslužijo drugo življenje." },
+  { n: "01", t: "Kuhinje po meri", d: "Od zasnove do vgradnje. Masivne fronte, ročno kovani okovi, popolna integracija aparatov.", img: project1 },
+  { n: "02", t: "Mize in klopi", d: "Jedilne mize, pisalne mize, klopi — iz enotnih plošč masivnega lesa ali živih robov.", img: project4 },
+  { n: "03", t: "Vgradne omare", d: "Od stene do stene, prilagojene arhitekturi prostora. Notranjost po vaših navadah.", img: project3 },
+  { n: "04", t: "Stopnice", d: "Konzolne, lebdeče, klasične. V kombinaciji s kovino ali steklom.", img: project2 },
+  { n: "05", t: "Notranja oprema poslovnih prostorov", d: "Recepcije, restavracije, hoteli. Rešitve, ki dvignejo prostor.", img: project6 },
+  { n: "06", t: "Restavriranje", d: "Skrb za stare kose, ki si zaslužijo drugo življenje.", img: project5 },
 ];
 
 function Offer() {
@@ -39,14 +45,28 @@ function Offer() {
       <section className="pb-24 md:pb-40">
         <div className="container-page">
           <div className="border-t border-border/60">
-            {SERVICES.map((s) => (
+            {SERVICES.map((s, i) => (
               <article
                 key={s.n}
-                className="group grid grid-cols-[auto_1fr] items-start gap-6 border-b border-border/60 py-10 md:grid-cols-[100px_1fr_1fr] md:gap-16 md:py-14"
+                className="group grid grid-cols-1 items-start gap-8 border-b border-border/60 py-12 md:grid-cols-12 md:gap-12 md:py-20"
               >
-                <span className="font-display text-lg text-beige-deep">{s.n}</span>
-                <h2 className="font-display text-3xl font-light leading-tight md:text-5xl">{s.t}</h2>
-                <p className="col-start-2 max-w-xl text-foreground/75 md:col-start-3 md:pt-2">{s.d}</p>
+                <div className={`md:col-span-6 ${i % 2 === 1 ? "md:order-2" : ""}`}>
+                  <div className="aspect-[4/3] overflow-hidden bg-muted">
+                    <img
+                      src={s.img}
+                      alt={s.t}
+                      width={1600}
+                      height={1200}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+                    />
+                  </div>
+                </div>
+                <div className="md:col-span-6 md:pt-4">
+                  <span className="font-display text-lg text-beige-deep">{s.n}</span>
+                  <h2 className="mt-3 font-display text-3xl font-light leading-tight md:text-5xl">{s.t}</h2>
+                  <p className="mt-5 max-w-xl text-foreground/75">{s.d}</p>
+                </div>
               </article>
             ))}
           </div>

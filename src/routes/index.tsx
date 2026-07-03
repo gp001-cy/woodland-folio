@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import hero1 from "@/assets/hero-1.jpg";
 import hero2 from "@/assets/hero-2.jpg";
+import hero4 from "@/assets/hero-4-kitchen.jpg";
+import hero5 from "@/assets/hero-5-hands.jpg";
 import wide2 from "@/assets/wide-2.jpg";
 import wide1 from "@/assets/wide-1.jpg";
 import project4 from "@/assets/project-4.jpg";
@@ -18,9 +20,11 @@ export const Route = createFileRoute("/")({
 });
 
 const SLIDES = [
-  { src: hero1, eyebrow: "Delavnica", title: "Roka, ki pozna les" },
+  { src: hero4, eyebrow: "Kuhinja", title: "Kuhinja, ki nosi zgodbo" },
+  { src: hero5, eyebrow: "Delavnica", title: "Roka, ki pozna les" },
   { src: hero2, eyebrow: "Miza", title: "Prostor, ki se zbere okoli lesa" },
   { src: wide2, eyebrow: "Vgradnja", title: "Pohištvo, oblikovano po prostoru" },
+  { src: hero1, eyebrow: "Detajl", title: "Spojina, ki drži generacije" },
 ];
 
 const REVIEWS = [
@@ -45,8 +49,8 @@ function Home() {
   return (
     <SiteLayout>
       {/* HERO — horizontal scroll gallery */}
-      <section className="relative">
-        <div className="no-scrollbar snap-x-mand flex h-[100svh] w-full overflow-x-auto">
+      <section className="relative pt-16 md:pt-20">
+        <div className="no-scrollbar snap-x-mand flex h-[calc(100svh-4rem)] md:h-[calc(100svh-5rem)] w-full overflow-x-auto">
           {SLIDES.map((s, i) => (
             <article
               key={i}

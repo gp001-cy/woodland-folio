@@ -81,7 +81,7 @@ function ProjectDetail() {
               {project.intro}
             </p>
             <div className="mt-12 space-y-6 text-lg leading-relaxed text-foreground/80">
-              {project.story.map((p, i) => <p key={i}>{p}</p>)}
+              {project.story.map((p: string, i: number) => <p key={i}>{p}</p>)}
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@ function ProjectDetail() {
       {/* GALLERY */}
       <section className="pb-24 md:pb-40">
         <div className="container-page space-y-6 md:space-y-10">
-          {project.gallery.map((src, i) => (
+          {project.gallery.map((src: string, i: number) => (
             <figure
               key={i}
               className={

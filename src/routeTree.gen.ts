@@ -9,38 +9,154 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ProjektiRouteImport } from './routes/projekti'
+import { Route as PonudbaRouteImport } from './routes/ponudba'
+import { Route as ONasRouteImport } from './routes/o-nas'
+import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProjektiSlugRouteImport } from './routes/projekti.$slug'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjektiRoute = ProjektiRouteImport.update({
+  id: '/projekti',
+  path: '/projekti',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PonudbaRoute = PonudbaRouteImport.update({
+  id: '/ponudba',
+  path: '/ponudba',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ONasRoute = ONasRouteImport.update({
+  id: '/o-nas',
+  path: '/o-nas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjektiSlugRoute = ProjektiSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ProjektiRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/kontakt': typeof KontaktRoute
+  '/o-nas': typeof ONasRoute
+  '/ponudba': typeof PonudbaRoute
+  '/projekti': typeof ProjektiRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/projekti/$slug': typeof ProjektiSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/kontakt': typeof KontaktRoute
+  '/o-nas': typeof ONasRoute
+  '/ponudba': typeof PonudbaRoute
+  '/projekti': typeof ProjektiRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/projekti/$slug': typeof ProjektiSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/kontakt': typeof KontaktRoute
+  '/o-nas': typeof ONasRoute
+  '/ponudba': typeof PonudbaRoute
+  '/projekti': typeof ProjektiRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/projekti/$slug': typeof ProjektiSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/kontakt'
+    | '/o-nas'
+    | '/ponudba'
+    | '/projekti'
+    | '/sitemap.xml'
+    | '/projekti/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/kontakt'
+    | '/o-nas'
+    | '/ponudba'
+    | '/projekti'
+    | '/sitemap.xml'
+    | '/projekti/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/kontakt'
+    | '/o-nas'
+    | '/ponudba'
+    | '/projekti'
+    | '/sitemap.xml'
+    | '/projekti/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  KontaktRoute: typeof KontaktRoute
+  ONasRoute: typeof ONasRoute
+  PonudbaRoute: typeof PonudbaRoute
+  ProjektiRoute: typeof ProjektiRouteWithChildren
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projekti': {
+      id: '/projekti'
+      path: '/projekti'
+      fullPath: '/projekti'
+      preLoaderRoute: typeof ProjektiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ponudba': {
+      id: '/ponudba'
+      path: '/ponudba'
+      fullPath: '/ponudba'
+      preLoaderRoute: typeof PonudbaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/o-nas': {
+      id: '/o-nas'
+      path: '/o-nas'
+      fullPath: '/o-nas'
+      preLoaderRoute: typeof ONasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +164,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projekti/$slug': {
+      id: '/projekti/$slug'
+      path: '/$slug'
+      fullPath: '/projekti/$slug'
+      preLoaderRoute: typeof ProjektiSlugRouteImport
+      parentRoute: typeof ProjektiRoute
+    }
   }
 }
 
+interface ProjektiRouteChildren {
+  ProjektiSlugRoute: typeof ProjektiSlugRoute
+}
+
+const ProjektiRouteChildren: ProjektiRouteChildren = {
+  ProjektiSlugRoute: ProjektiSlugRoute,
+}
+
+const ProjektiRouteWithChildren = ProjektiRoute._addFileChildren(
+  ProjektiRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  KontaktRoute: KontaktRoute,
+  ONasRoute: ONasRoute,
+  PonudbaRoute: PonudbaRoute,
+  ProjektiRoute: ProjektiRouteWithChildren,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -12,14 +12,6 @@ const NAV = [
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -30,11 +22,7 @@ export function SiteNav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled || open
-          ? "bg-background/85 backdrop-blur-md border-b border-border/60"
-          : "bg-transparent"
-      }`}
+      className="fixed inset-x-0 top-0 z-50 bg-background/90 backdrop-blur-md border-b border-border/60"
     >
       <div className="container-page grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-4 md:py-5">
         <Link

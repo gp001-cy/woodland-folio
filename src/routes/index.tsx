@@ -1,9 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
-import hero4 from "@/assets/hero-4-kitchen.jpg";
-import hero5 from "@/assets/hero-5-hands.jpg";
-import wide2 from "@/assets/wide-2.jpg";
 import wide1 from "@/assets/wide-1.jpg";
 import project4 from "@/assets/project-4.jpg";
 import { projects } from "@/data/projects";
@@ -18,7 +15,7 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const SLIDES = [hero4, wide2, hero5];
+
 
 const REVIEWS = [
   {
@@ -41,32 +38,16 @@ const REVIEWS = [
 function Home() {
   return (
     <SiteLayout>
-      {/* HERO — horizontal scroll gallery (3 slike, brez besedila) */}
+      {/* HERO — glavna slika */}
       <section className="relative pt-16 md:pt-20">
-        <div className="no-scrollbar snap-x-mand flex h-[calc(100svh-4rem)] md:h-[calc(100svh-5rem)] w-full overflow-x-auto">
-          {SLIDES.map((src, i) => (
-            <article
-              key={i}
-              className="relative h-full w-screen shrink-0 snap-center"
-            >
-              <img
-                src={src}
-                alt="Mizarstvo Šetina"
-                width={1920}
-                height={1280}
-                loading={i === 0 ? "eager" : "lazy"}
-                className="h-full w-full object-cover"
-              />
-            </article>
-          ))}
-        </div>
-
-        <div className="pointer-events-none absolute inset-x-0 bottom-6 z-30">
-          <p className="container-page text-[10px] uppercase tracking-[0.3em] text-bone/80 md:text-xs">
-            Podrsajte →
-          </p>
-        </div>
+        <img
+          src="/IMG_9636.jpeg"
+          alt="Mizarstvo Šetina"
+          loading="eager"
+          className="w-full h-auto"
+        />
       </section>
+
 
       {/* PHILOSOPHY / STORY */}
       <section className="bg-background py-24 md:py-40">

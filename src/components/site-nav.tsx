@@ -32,9 +32,9 @@ export function SiteNav() {
             <img
               src={logo.url}
               alt="Mizarstvo Šetina"
-              width={44}
-              height={30}
-              className="h-8 w-auto shrink-0 md:h-10"
+              width={70}
+              height={48}
+              className="h-[3.2rem] w-auto shrink-0 md:h-16"
             />
             <span className="hidden truncate font-display text-lg tracking-tight sm:inline">
               Mizarstvo Šetina

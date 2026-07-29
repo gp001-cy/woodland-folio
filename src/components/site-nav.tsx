@@ -77,17 +77,17 @@ export function SiteNav() {
 
       {/* Mobile drawer */}
       <div
-        className={`fixed inset-0 top-0 z-40 bg-background transition-opacity duration-500 md:hidden ${
+        className={`fixed inset-0 top-0 z-40 bg-beige transition-opacity duration-500 md:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
-        <nav className="container-page flex h-full flex-col justify-center gap-6 pb-20">
+        <nav className="container-page flex h-full flex-col items-center justify-center gap-6 text-center">
           {NAV.map((item, i) => (
             <Link
               key={item.to}
               to={item.to}
               onClick={() => setOpen(false)}
-              className="font-display text-5xl tracking-tight text-foreground/90 transition-colors hover:text-foreground"
+              className="font-display text-4xl tracking-tight text-ink/90 transition-colors hover:text-ink"
               style={{ transitionDelay: `${i * 40}ms` }}
             >
               {item.label}

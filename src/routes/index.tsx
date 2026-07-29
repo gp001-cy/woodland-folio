@@ -49,7 +49,7 @@ function Home() {
 
       {/* PHILOSOPHY / STORY */}
       <section className="bg-background py-24 md:py-40">
-        <Reveal className="container-page grid gap-12 md:grid-cols-12 md:gap-16">
+        <div className="container-page grid gap-12 md:grid-cols-12 md:gap-16">
           <div className="md:col-span-4">
             <p className="eyebrow">Filozofija</p>
           </div>
@@ -71,7 +71,7 @@ function Home() {
               </p>
             </div>
           </div>
-        </Reveal>
+        </div>
       </section>
 
       {/* Full-width image break */}

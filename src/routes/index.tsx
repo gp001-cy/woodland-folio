@@ -48,7 +48,7 @@ function Home() {
 
 
       {/* PHILOSOPHY / STORY */}
-      <section className="bg-background py-24 md:py-40">
+      <MobileReveal as="section" className="bg-background py-24 md:py-40">
         <div className="container-page grid gap-12 md:grid-cols-12 md:gap-16">
           <div className="md:col-span-4">
             <p className="eyebrow">Filozofija</p>
@@ -72,7 +72,8 @@ function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </MobileReveal>
+
 
       {/* Full-width image break */}
       <Reveal as="section" className="relative h-[60vh] w-full overflow-hidden md:h-[85vh]">

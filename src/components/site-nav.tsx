@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import logo from "@/assets/setina-logo.png.asset.json";
+import logo from "@/assets/setina-antler.png.asset.json";
 
 const NAV = [
   { to: "/", label: "Domov" },

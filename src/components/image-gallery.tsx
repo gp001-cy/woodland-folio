@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const IMAGES = ["/IMG_9640.jpeg", "/IMG_9636.jpeg", "/IMG_8680.jpeg"];
+const MOBILE_IMAGES = ["/IMG_8749.jpeg", "/IMG_9455.jpeg", "/IMG_8872.jpeg"];
 const INTERVAL = 3500;
 const SWIPE_THRESHOLD = 50;
 
@@ -61,16 +62,25 @@ export function ImageGallery() {
         style={{ transform: `translateX(-${index * 100}%)` }}
       >
         {IMAGES.map((src, i) => (
-          <img
-            key={src}
-            src={src}
-            alt={`Mizarstvo Šetina — galerija ${i + 1}`}
-            draggable={false}
-            loading={i === 0 ? "eager" : "lazy"}
-            className="w-full h-[calc(100svh-4rem)] md:h-[calc(100svh-5rem)] object-cover shrink-0"
-          />
+          <div key={src} className="w-full shrink-0">
+            <img
+              src={src}
+              alt={`Mizarstvo Šetina — galerija ${i + 1}`}
+              draggable={false}
+              loading={i === 0 ? "eager" : "lazy"}
+              className="hidden md:block w-full h-[calc(100svh-4rem)] md:h-[calc(100svh-5rem)] object-cover"
+            />
+            <img
+              src={MOBILE_IMAGES[i]}
+              alt={`Mizarstvo Šetina — galerija ${i + 1}`}
+              draggable={false}
+              loading={i === 0 ? "eager" : "lazy"}
+              className="block md:hidden w-full h-[calc(100svh-4rem)] object-cover"
+            />
+          </div>
         ))}
       </div>
+
 
       <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 gap-3">
         {IMAGES.map((src, i) => (

@@ -38,15 +38,11 @@ const REVIEWS = [
 function Home() {
   return (
     <SiteLayout>
-      {/* HERO — glavna slika */}
-      <section className="relative pt-16 md:pt-20">
-        <img
-          src="/IMG_9636.jpeg"
-          alt="Mizarstvo Šetina"
-          loading="eager"
-          className="w-full h-auto"
-        />
+      {/* HERO — galerija */}
+      <section className="relative pt-24 md:pt-32 px-6">
+        <ImageGallery />
       </section>
+
 
 
       {/* PHILOSOPHY / STORY */}

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+
 import { cn } from "@/lib/utils";
 
 const IMAGES = ["/IMG_8680.jpeg", "/IMG_9636.jpeg", "/IMG_9640.jpeg"];
@@ -26,7 +26,7 @@ export function ImageGallery() {
 
   return (
     <div
-      className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-2xl shadow-xl group"
+      className="relative w-full overflow-hidden group"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -40,29 +40,12 @@ export function ImageGallery() {
             src={src}
             alt={`Mizarstvo Šetina — galerija ${i + 1}`}
             loading={i === 0 ? "eager" : "lazy"}
-            className="w-full h-[400px] object-cover shrink-0"
+            className="w-full h-[400px] md:h-[70vh] object-cover shrink-0"
           />
         ))}
       </div>
 
-      <button
-        type="button"
-        aria-label="Prejšnja slika"
-        onClick={prev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-background/70 p-2 text-foreground backdrop-blur transition-all duration-500 ease-in-out hover:bg-background"
-      >
-        <ChevronLeft className="h-5 w-5" />
-      </button>
-      <button
-        type="button"
-        aria-label="Naslednja slika"
-        onClick={next}
-        className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-background/70 p-2 text-foreground backdrop-blur transition-all duration-500 ease-in-out hover:bg-background"
-      >
-        <ChevronRight className="h-5 w-5" />
-      </button>
-
-      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+      <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 gap-3">
         {IMAGES.map((src, i) => (
           <button
             key={src}
@@ -70,12 +53,15 @@ export function ImageGallery() {
             aria-label={`Pojdi na sliko ${i + 1}`}
             onClick={() => setIndex(i)}
             className={cn(
-              "h-2 rounded-full transition-all duration-500 ease-in-out",
-              i === index ? "w-6 bg-background" : "w-2 bg-background/50",
+              "h-2.5 cursor-pointer rounded-full transition-all duration-500 ease-in-out",
+              i === index
+                ? "w-8 bg-background"
+                : "w-2.5 bg-background/50 hover:bg-background/80",
             )}
           />
         ))}
       </div>
     </div>
+
   );
 }

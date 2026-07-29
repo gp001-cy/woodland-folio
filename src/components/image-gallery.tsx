@@ -51,8 +51,7 @@ export function ImageGallery() {
         "relative w-full overflow-hidden select-none touch-pan-y",
         dragging ? "cursor-grabbing" : "cursor-grab",
       )}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      onPointerDown={onPointerDown}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}

@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
+import { ImageGallery } from "@/components/image-gallery";
+
 import wide1 from "@/assets/wide-1.jpg";
 import project4 from "@/assets/project-4.jpg";
 import { projects } from "@/data/projects";
@@ -38,15 +40,11 @@ const REVIEWS = [
 function Home() {
   return (
     <SiteLayout>
-      {/* HERO — glavna slika */}
-      <section className="relative pt-16 md:pt-20">
-        <img
-          src="/IMG_9636.jpeg"
-          alt="Mizarstvo Šetina"
-          loading="eager"
-          className="w-full h-auto"
-        />
+      {/* HERO — galerija */}
+      <section className="relative pt-24 md:pt-32 px-6">
+        <ImageGallery />
       </section>
+
 
 
       {/* PHILOSOPHY / STORY */}

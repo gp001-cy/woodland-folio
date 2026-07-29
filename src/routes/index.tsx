@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const SLIDES = [hero4, wide2, hero5];
+
 
 const REVIEWS = [
   {

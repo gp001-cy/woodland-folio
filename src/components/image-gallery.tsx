@@ -8,11 +8,9 @@ const SWIPE_THRESHOLD = 50;
 
 export function ImageGallery() {
   const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
   const [dragging, setDragging] = useState(false);
   const startX = useRef<number | null>(null);
   const deltaX = useRef(0);
-  const timer = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const next = useCallback(() => setIndex((i) => (i + 1) % IMAGES.length), []);
   const prev = useCallback(
@@ -21,12 +19,10 @@ export function ImageGallery() {
   );
 
   useEffect(() => {
-    if (paused || dragging) return;
-    timer.current = setInterval(next, INTERVAL);
-    return () => {
-      if (timer.current) clearInterval(timer.current);
-    };
-  }, [paused, dragging, next]);
+    if (dragging) return;
+    const id = setTimeout(next, INTERVAL);
+    return () => clearTimeout(id);
+  }, [index, dragging, next]);
 
   const onPointerDown = (e: React.PointerEvent) => {
     startX.current = e.clientX;
@@ -55,8 +51,6 @@ export function ImageGallery() {
         "relative w-full overflow-hidden select-none touch-pan-y",
         dragging ? "cursor-grabbing" : "cursor-grab",
       )}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}

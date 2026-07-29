@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { getProject, projects } from "@/data/projects";
+import { Reveal } from "@/components/reveal";
 
 export const Route = createFileRoute("/projekti/$slug")({
   loader: ({ params }) => {
@@ -69,7 +70,7 @@ function ProjectDetail() {
 
       {/* META + INTRO */}
       <section className="py-24 md:py-40">
-        <div className="container-page grid gap-12 md:grid-cols-12 md:gap-16">
+        <Reveal className="container-page grid gap-12 md:grid-cols-12 md:gap-16">
           <aside className="md:col-span-4 space-y-8">
             <Meta label="Lokacija" value={project.location} />
             <Meta label="Leto" value={project.year} />
@@ -84,14 +85,15 @@ function ProjectDetail() {
               {project.story.map((p: string, i: number) => <p key={i}>{p}</p>)}
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* GALLERY */}
       <section className="pb-24 md:pb-40">
         <div className="container-page space-y-6 md:space-y-10">
           {project.gallery.map((src: string, i: number) => (
-            <figure
+            <Reveal
+              as="figure"
               key={i}
               className={
                 i % 3 === 1
@@ -107,7 +109,7 @@ function ProjectDetail() {
                 loading="lazy"
                 className="h-auto w-full"
               />
-            </figure>
+            </Reveal>
           ))}
         </div>
       </section>

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
-const IMAGES = ["/IMG_8680.jpeg", "/IMG_9636.jpeg", "/IMG_9640.jpeg"];
+const IMAGES = ["/IMG_9640.jpeg", "/IMG_9636.jpeg", "/IMG_8680.jpeg"];
 const INTERVAL = 3500;
 
 export function ImageGallery() {

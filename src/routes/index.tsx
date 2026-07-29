@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
 import { ImageGallery } from "@/components/image-gallery";
+import { MobileReveal } from "@/components/mobile-reveal";
+
 
 import wide1 from "@/assets/wide-1.jpg";
 import project4 from "@/assets/project-4.jpg";
@@ -48,7 +50,7 @@ function Home() {
 
 
       {/* PHILOSOPHY / STORY */}
-      <section className="bg-background py-24 md:py-40">
+      <MobileReveal as="section" className="bg-background py-24 md:py-40">
         <div className="container-page grid gap-12 md:grid-cols-12 md:gap-16">
           <div className="md:col-span-4">
             <p className="eyebrow">Filozofija</p>
@@ -72,7 +74,8 @@ function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </MobileReveal>
+
 
       {/* Full-width image break */}
       <Reveal as="section" className="relative h-[60vh] w-full overflow-hidden md:h-[85vh]">

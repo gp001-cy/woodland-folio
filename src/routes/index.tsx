@@ -1,9 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
-import hero4 from "@/assets/hero-4-kitchen.jpg";
-import hero5 from "@/assets/hero-5-hands.jpg";
-import wide2 from "@/assets/wide-2.jpg";
+import wide1 from "@/assets/wide-1.jpg";
 import wide1 from "@/assets/wide-1.jpg";
 import project4 from "@/assets/project-4.jpg";
 import { projects } from "@/data/projects";

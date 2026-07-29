@@ -52,7 +52,6 @@ export function ImageGallery() {
         dragging ? "cursor-grabbing" : "cursor-grab",
       )}
       onPointerDown={onPointerDown}
-      onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerUp}

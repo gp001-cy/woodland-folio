@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
-import hero1 from "@/assets/hero-1.jpg";
-import hero2 from "@/assets/hero-2.jpg";
+import { Reveal } from "@/components/reveal";
 import hero4 from "@/assets/hero-4-kitchen.jpg";
 import hero5 from "@/assets/hero-5-hands.jpg";
 import wide2 from "@/assets/wide-2.jpg";
@@ -19,13 +18,7 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const SLIDES = [
-  { src: hero4, eyebrow: "Kuhinja", title: "Kuhinja, ki nosi zgodbo" },
-  { src: hero5, eyebrow: "Delavnica", title: "Roka, ki pozna les" },
-  { src: hero2, eyebrow: "Miza", title: "Prostor, ki se zbere okoli lesa" },
-  { src: wide2, eyebrow: "Vgradnja", title: "Pohištvo, oblikovano po prostoru" },
-  { src: hero1, eyebrow: "Detajl", title: "Spojina, ki drži generacije" },
-];
+const SLIDES = [hero4, wide2, hero5];
 
 const REVIEWS = [
   {
@@ -48,51 +41,28 @@ const REVIEWS = [
 function Home() {
   return (
     <SiteLayout>
-      {/* HERO — horizontal scroll gallery */}
+      {/* HERO — horizontal scroll gallery (3 slike, brez besedila) */}
       <section className="relative pt-16 md:pt-20">
         <div className="no-scrollbar snap-x-mand flex h-[calc(100svh-4rem)] md:h-[calc(100svh-5rem)] w-full overflow-x-auto">
-          {SLIDES.map((s, i) => (
+          {SLIDES.map((src, i) => (
             <article
               key={i}
-              className="relative flex h-full w-screen shrink-0 snap-center items-end"
+              className="relative h-full w-screen shrink-0 snap-center"
             >
               <img
-                src={s.src}
-                alt={s.title}
+                src={src}
+                alt="Mizarstvo Šetina"
                 width={1920}
                 height={1280}
                 loading={i === 0 ? "eager" : "lazy"}
-                className="absolute inset-0 h-full w-full object-cover"
+                className="h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
-              <div className="container-page relative z-10 pb-16 md:pb-24">
-                <p className="text-xs uppercase tracking-[0.3em] text-bone/80">
-                  {String(i + 1).padStart(2, "0")} — {s.eyebrow}
-                </p>
-                <h2 className="mt-4 max-w-3xl font-display text-4xl font-light leading-[0.95] text-bone md:text-7xl">
-                  {s.title}
-                </h2>
-              </div>
             </article>
           ))}
         </div>
 
-        {/* Top overlay slogan */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-30 hidden pt-28 md:block">
-          <div className="container-page flex items-start justify-between">
-            <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-bone/70">
-                Mizarstvo Šetina — od 1998
-              </p>
-            </div>
-            <p className="max-w-xs text-right text-xs uppercase tracking-[0.25em] text-bone/70">
-              Podrsajte za odkritje →
-            </p>
-          </div>
-        </div>
-
-        <div className="pointer-events-none absolute inset-x-0 bottom-6 z-30 md:hidden">
-          <p className="container-page text-[10px] uppercase tracking-[0.3em] text-bone/80">
+        <div className="pointer-events-none absolute inset-x-0 bottom-6 z-30">
+          <p className="container-page text-[10px] uppercase tracking-[0.3em] text-bone/80 md:text-xs">
             Podrsajte →
           </p>
         </div>
@@ -100,7 +70,7 @@ function Home() {
 
       {/* PHILOSOPHY / STORY */}
       <section className="bg-background py-24 md:py-40">
-        <div className="container-page grid gap-12 md:grid-cols-12 md:gap-16">
+        <Reveal className="container-page grid gap-12 md:grid-cols-12 md:gap-16">
           <div className="md:col-span-4">
             <p className="eyebrow">Filozofija</p>
           </div>
@@ -122,11 +92,11 @@ function Home() {
               </p>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* Full-width image break */}
-      <section className="relative h-[60vh] w-full overflow-hidden md:h-[85vh]">
+      <Reveal as="section" className="relative h-[60vh] w-full overflow-hidden md:h-[85vh]">
         <img
           src={wide1}
           alt="Delavnica Šetina"
@@ -135,7 +105,7 @@ function Home() {
           loading="lazy"
           className="h-full w-full object-cover"
         />
-      </section>
+      </Reveal>
 
       {/* SELECTED PROJECTS TEASE */}
       <section className="bg-background py-24 md:py-40">
@@ -154,9 +124,9 @@ function Home() {
           </div>
 
           <div className="mt-16 grid gap-8 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
-            {projects.slice(0, 3).map((p) => (
+            {projects.slice(0, 3).map((p, i) => (
+              <Reveal key={p.slug} delay={i * 120}>
               <Link
-                key={p.slug}
                 to="/projekti/$slug"
                 params={{ slug: p.slug }}
                 className="group block"
@@ -177,6 +147,7 @@ function Home() {
                 </div>
                 <p className="mt-1 text-xs uppercase tracking-widest text-beige-deep">{p.category}</p>
               </Link>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -190,7 +161,7 @@ function Home() {
 
           <div className="mt-16 grid gap-10 md:grid-cols-3 md:gap-12">
             {REVIEWS.map((r, i) => (
-              <figure key={i} className="flex flex-col">
+              <Reveal as="figure" key={i} delay={i * 120} className="flex flex-col">
                 <blockquote className="font-display text-xl leading-[1.35] text-foreground md:text-2xl">
                   <span aria-hidden className="text-beige-deep">“</span>
                   {r.text}
@@ -200,14 +171,14 @@ function Home() {
                   <span className="text-foreground">{r.author}</span>
                   <span className="text-muted-foreground"> · {r.place}</span>
                 </figcaption>
-              </figure>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* BIG IMAGE */}
-      <section className="relative h-[70vh] w-full overflow-hidden md:h-[95vh]">
+      <Reveal as="section" className="relative h-[70vh] w-full overflow-hidden md:h-[95vh]">
         <img
           src={project4}
           alt="Živi rob orehove mize"
@@ -216,11 +187,11 @@ function Home() {
           loading="lazy"
           className="h-full w-full object-cover"
         />
-      </section>
+      </Reveal>
 
       {/* CLOSING QUOTE */}
       <section className="bg-background py-32 md:py-56">
-        <div className="container-page">
+        <Reveal className="container-page">
           <blockquote className="mx-auto max-w-5xl text-center">
             <p className="font-display text-4xl font-light leading-[1.05] tracking-tight md:text-7xl">
               <span className="text-beige-deep">„</span>Les si zapomni vse —
@@ -239,7 +210,7 @@ function Home() {
               Začnimo projekt
             </Link>
           </div>
-        </div>
+        </Reveal>
       </section>
     </SiteLayout>
   );

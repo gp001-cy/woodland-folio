@@ -41,7 +41,7 @@ function Home() {
   return (
     <SiteLayout>
       {/* HERO — galerija */}
-      <section className="relative pt-24 md:pt-32 px-6">
+      <section className="relative pt-16 md:pt-20">
         <ImageGallery />
       </section>
 

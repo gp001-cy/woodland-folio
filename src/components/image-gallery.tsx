@@ -73,7 +73,7 @@ export function ImageGallery() {
             alt={`Mizarstvo Šetina — galerija ${i + 1}`}
             draggable={false}
             loading={i === 0 ? "eager" : "lazy"}
-            className="w-full aspect-[4/3] md:aspect-[16/10] h-auto object-cover shrink-0"
+            className="w-full h-[calc(100svh-4rem)] md:h-[calc(100svh-5rem)] object-cover shrink-0"
           />
         ))}
       </div>

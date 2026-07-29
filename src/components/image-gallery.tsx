@@ -4,10 +4,14 @@ import { cn } from "@/lib/utils";
 
 const IMAGES = ["/IMG_9640.jpeg", "/IMG_9636.jpeg", "/IMG_8680.jpeg"];
 const INTERVAL = 3500;
+const SWIPE_THRESHOLD = 50;
 
 export function ImageGallery() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [dragging, setDragging] = useState(false);
+  const startX = useRef<number | null>(null);
+  const deltaX = useRef(0);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const next = useCallback(() => setIndex((i) => (i + 1) % IMAGES.length), []);
@@ -17,18 +21,46 @@ export function ImageGallery() {
   );
 
   useEffect(() => {
-    if (paused) return;
+    if (paused || dragging) return;
     timer.current = setInterval(next, INTERVAL);
     return () => {
       if (timer.current) clearInterval(timer.current);
     };
-  }, [paused, next]);
+  }, [paused, dragging, next]);
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    startX.current = e.clientX;
+    deltaX.current = 0;
+    setDragging(true);
+    (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
+  };
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (startX.current === null) return;
+    deltaX.current = e.clientX - startX.current;
+  };
+
+  const onPointerUp = () => {
+    if (startX.current === null) return;
+    if (deltaX.current <= -SWIPE_THRESHOLD) next();
+    else if (deltaX.current >= SWIPE_THRESHOLD) prev();
+    startX.current = null;
+    deltaX.current = 0;
+    setDragging(false);
+  };
 
   return (
     <div
-      className="relative w-full overflow-hidden group"
+      className={cn(
+        "relative w-full overflow-hidden select-none touch-pan-y",
+        dragging ? "cursor-grabbing" : "cursor-grab",
+      )}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerUp}
     >
       <div
         className="flex transition-all duration-500 ease-in-out"
@@ -39,6 +71,7 @@ export function ImageGallery() {
             key={src}
             src={src}
             alt={`Mizarstvo Šetina — galerija ${i + 1}`}
+            draggable={false}
             loading={i === 0 ? "eager" : "lazy"}
             className="w-full h-[400px] md:h-[70vh] object-cover shrink-0"
           />
@@ -62,6 +95,5 @@ export function ImageGallery() {
         ))}
       </div>
     </div>
-
   );
 }

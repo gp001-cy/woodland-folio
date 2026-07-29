@@ -63,6 +63,5 @@ export function ImageGallery() {
       </div>
     </div>
 
-    </div>
   );
 }

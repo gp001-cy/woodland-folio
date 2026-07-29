@@ -32,8 +32,8 @@ function ProjectsPage() {
       <section className="pb-24 md:pb-40">
         <div className="container-page grid gap-16 md:grid-cols-2 md:gap-x-12 md:gap-y-28">
           {projects.map((p, i) => (
+            <Reveal key={p.slug} delay={(i % 2) * 120}>
             <Link
-              key={p.slug}
               to="/projekti/$slug"
               params={{ slug: p.slug }}
               className={`group block ${i % 2 === 1 ? "md:mt-32" : ""}`}
@@ -61,6 +61,7 @@ function ProjectsPage() {
                 </span>
               </div>
             </Link>
+            </Reveal>
           ))}
         </div>
       </section>

@@ -34,7 +34,7 @@ export function SiteNav() {
               alt="Mizarstvo Šetina"
               width={70}
               height={48}
-              className="h-[3.2rem] w-auto shrink-0 md:h-16"
+              className="h-[3.68rem] w-auto shrink-0 md:h-16"
             />
             <span className="hidden truncate font-display text-lg tracking-tight sm:inline">
               Mizarstvo Šetina

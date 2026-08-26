@@ -49,20 +49,7 @@ function About() {
           <div className="md:col-span-7 md:pt-12">
             <div className="space-y-6 text-lg leading-relaxed text-foreground/85">
               <p>
-                Mizarstvo Šetina je nastalo leta 1998 v skromni delavnici na
-                obrobju Kranja. Marko Šetina se je obrti izučil pri očetu, ta
-                pri svojem — tretja generacija, ki ve, kako v les vstopiti brez
-                sile.
-              </p>
-              <p>
-                Danes nas je sedem: dva mojstra, štirje mizarji in oblikovalka.
-                Delamo v prenovljeni sušilnici, kjer se les počiva leta, preden
-                dobi svojo obliko. Ne hitimo. Nikoli.
-              </p>
-              <p>
-                Sodelujemo z arhitekti, oblikovalci in naročniki, ki verjamejo
-                v isto: da je predmet, ki ga naredi človek, bolj vreden od
-                predmeta, ki ga naredi stroj.
+                Dobro pohištvo ni le kos opreme, temveč premišljeno oblikovan del prostora. Vsak projekt obravnavamo individualno, prisluhnemo željam stranke in skupaj poiščemo rešitev, ki združuje estetiko, funkcionalnost ter kakovost izdelave. Naš cilj ni izdelati čim več pohištva, pač pa izdelati kose, pod katere se z veseljem podpišemo. Od prve ideje do montaže želimo držati enak standard kakovosti in poskrbeti, da je celoten proces za stranko čim bolj prijeten in brezskrben.
               </p>
             </div>
           </div>

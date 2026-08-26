@@ -23,7 +23,7 @@ export function SiteFooter() {
           <p className="eyebrow mb-5">Navigacija</p>
           <ul className="space-y-3 text-sm">
             <li><Link to="/ponudba" className="hover:text-foreground text-foreground/70">Ponudba</Link></li>
-            <li><Link to="/projekti" className="hover:text-foreground text-foreground/70">Projekti</Link></li>
+            
             <li><Link to="/o-nas" className="hover:text-foreground text-foreground/70">O nas</Link></li>
             <li><Link to="/kontakt" className="hover:text-foreground text-foreground/70">Kontakt</Link></li>
           </ul>

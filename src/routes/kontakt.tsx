@@ -40,8 +40,8 @@ function Contact() {
             </div>
             <div>
               <p className="eyebrow mb-4">Pišite</p>
-              <a href="mailto:info@setina.si" className="block font-display text-2xl hover:text-beige-deep">
-                info@setina.si
+              <a href="mailto:info@mizarstvosetina.si" className="block font-display text-2xl hover:text-beige-deep">
+                info@mizarstvosetina.si
               </a>
               <a href="tel:+38641000000" className="mt-2 block font-display text-2xl hover:text-beige-deep">
                 +386 41 000 000
@@ -53,55 +53,9 @@ function Contact() {
             </div>
           </div>
 
-          <form
-            className="md:col-span-7 space-y-8"
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert("Hvala! Vaše sporočilo je bilo poslano.");
-            }}
-          >
-            <div className="grid gap-8 md:grid-cols-2">
-              <Field label="Ime in priimek" name="name" required />
-              <Field label="E-pošta" name="email" type="email" required />
-            </div>
-            <Field label="Telefon" name="phone" />
-            <Field label="Tip projekta" name="project" placeholder="npr. kuhinja, miza, vgradna omara" />
-            <div>
-              <label className="eyebrow block" htmlFor="msg">Sporočilo</label>
-              <textarea
-                id="msg"
-                name="message"
-                rows={5}
-                className="mt-3 w-full resize-none border-b border-border bg-transparent py-3 text-lg focus:border-foreground focus:outline-none"
-              />
-            </div>
-            <button
-              type="submit"
-              className="mt-4 inline-flex items-center gap-3 border border-foreground px-8 py-4 text-sm uppercase tracking-[0.25em] transition-colors hover:bg-foreground hover:text-background"
-            >
-              Pošlji sporočilo
-            </button>
-          </form>
         </div>
       </section>
     </SiteLayout>
   );
 }
 
-function Field({
-  label, name, type = "text", placeholder, required,
-}: { label: string; name: string; type?: string; placeholder?: string; required?: boolean }) {
-  return (
-    <div>
-      <label htmlFor={name} className="eyebrow block">{label}</label>
-      <input
-        id={name}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        required={required}
-        className="mt-3 w-full border-b border-border bg-transparent py-3 text-lg placeholder:text-muted-foreground/60 focus:border-foreground focus:outline-none"
-      />
-    </div>
-  );
-}

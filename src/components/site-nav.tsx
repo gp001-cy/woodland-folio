@@ -5,7 +5,6 @@ import logo from "@/assets/setina-antler.png.asset.json";
 const NAV = [
   { to: "/", label: "Domov" },
   { to: "/ponudba", label: "Ponudba" },
-  { to: "/projekti", label: "Projekti" },
   { to: "/o-nas", label: "O nas" },
   { to: "/kontakt", label: "Kontakt" },
 ] as const;

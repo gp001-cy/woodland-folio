@@ -74,10 +74,11 @@ function About() {
           </div>
           <div className="md:col-span-8 space-y-16">
             {[
-              { n: "01", t: "Slovenski les", d: "Uporabljamo predvsem hrast, oreh, češnjo in javor iz slovenskih gozdov. Vsak kos poznamo po izvoru." },
-              { n: "02", t: "Tradicionalne vezi", d: "Rojenice, lastovičji rep, čep in luknja — spojine, ki so preživele stoletja, so preživele preizkus." },
-              { n: "03", t: "Naravni finiši", d: "Olja in voski na rastlinski osnovi. Brez sintetičnih lakov, brez toksinov v vašem domu." },
-              { n: "04", t: "Odgovorno", d: "Za vsako drevo, ki ga porabimo, posadimo tri. To ni marketing — to je pogoj, da lahko sploh delamo naprej." },
+              { n: "01", t: "Premišljeno oblikovanje prostora", d: "Pohištva ne obravnavamo kot izoliranega kosa, temveč kot ključen element, ki sooblikuje vaš bivalni ali delovni ambient. Ustvarjamo rešitve, ki prostor povežejo in mu dodajo vrednost." },
+              { n: "02", t: "Osebni in individualni pristop", d: "Vsak projekt je zgodba zase. Vašim željam in potrebam pozorno prisluhnemo ter z vami sodelujemo kot partnerji, da skupaj poiščemo popolno rešitev po vaši meri." },
+              { n: "03", t: "Zavezništvo estetike, funkcionalnosti in kakovosti", d: "Verjamemo, da lepota ne sme sklepati kompromisov pri uporabnosti. Naši izdelki so vizualno dovršeni, prijazni za uporabo in izdelani iz materialov, ki zagotavljajo dolgo življenjsko dobo." },
+              { n: "04", t: "Kakovost pred kvantiteto", d: "Naš cilj ni serijska proizvodnja, temveč ustvarjanje unikatnih kosov. Izdelujemo le tisto pohištvo, pod katerega se z največjim ponosom in veseljem podpišemo." },
+              { n: "05", t: "Brezskrbna izkušnja od A do Ž", d: "Prevzamemo odgovornost za celoten proces – od prve ideje in izrisa do končne montaže. Ohranjamo dosleden standard kakovosti na vsakem koraku in skrbimo, da je pot do vašega novega pohištva prijetna in popolnoma brez stresa." },
             ].map((p) => (
               <div key={p.n} className="grid grid-cols-[auto_1fr] gap-6 border-t border-border/60 pt-8 md:grid-cols-[80px_1fr] md:gap-10">
                 <span className="font-display text-2xl text-beige-deep">{p.n}</span>

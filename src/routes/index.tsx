@@ -54,6 +54,7 @@ function Home() {
         <div className="container-page grid gap-12 md:grid-cols-12 md:gap-16">
           <div className="md:col-span-4">
             <p className="eyebrow">Filozofija</p>
+            <h2 className="h-section mt-4 max-w-sm">Več kot le pohištvo</h2>
           </div>
           <div className="md:col-span-8">
             <p className="text-base leading-relaxed text-foreground/80 md:text-lg max-w-3xl">
@@ -114,7 +115,7 @@ function Home() {
       </Reveal>
 
       {/* CLOSING QUOTE */}
-      <section className="bg-background py-32 md:py-56">
+      <section className="bg-background py-32 md:py-40">
         <Reveal className="container-page">
           <blockquote className="mx-auto max-w-5xl text-center">
             <p className="font-display text-4xl font-light leading-[1.05] tracking-tight md:text-7xl">

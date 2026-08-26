@@ -7,7 +7,7 @@ import { MobileReveal } from "@/components/mobile-reveal";
 
 import wide1 from "@/assets/wide-1.jpg";
 import project4 from "@/assets/project-4.jpg";
-import { projects } from "@/data/projects";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -76,51 +76,6 @@ function Home() {
         />
       </Reveal>
 
-      {/* SELECTED PROJECTS TEASE */}
-      <section className="bg-background py-24 md:py-40">
-        <div className="container-page">
-          <div className="grid items-end gap-8 md:grid-cols-[1fr_auto]">
-            <div>
-              <p className="eyebrow">Izbrani projekti</p>
-              <h2 className="h-section mt-4 max-w-2xl">Nedavno delo</h2>
-            </div>
-            <Link
-              to="/projekti"
-              className="text-sm tracking-wide text-foreground/70 hover:text-foreground border-b border-foreground/40 pb-1 w-fit"
-            >
-              Vsi projekti →
-            </Link>
-          </div>
-
-          <div className="mt-16 grid gap-8 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
-            {projects.slice(0, 3).map((p, i) => (
-              <Reveal key={p.slug} delay={i * 120}>
-              <Link
-                to="/projekti/$slug"
-                params={{ slug: p.slug }}
-                className="group block"
-              >
-                <div className="aspect-[4/5] overflow-hidden bg-muted">
-                  <img
-                    src={p.cover}
-                    alt={p.title}
-                    width={1600}
-                    height={2000}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
-                  />
-                </div>
-                <div className="mt-5 flex items-baseline justify-between gap-4">
-                  <h3 className="font-display text-xl leading-tight">{p.title}</h3>
-                  <span className="text-xs uppercase tracking-widest text-muted-foreground shrink-0">{p.year}</span>
-                </div>
-                <p className="mt-1 text-xs uppercase tracking-widest text-beige-deep">{p.category}</p>
-              </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* REVIEWS */}
       <section className="bg-bone py-24 md:py-40">

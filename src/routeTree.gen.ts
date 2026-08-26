@@ -14,7 +14,6 @@ import { Route as PonudbaRouteImport } from './routes/ponudba'
 import { Route as ONasRouteImport } from './routes/o-nas'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ProjektiSlugRouteImport } from './routes/projekti.$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -41,11 +40,6 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProjektiSlugRoute = ProjektiSlugRouteImport.update({
-  id: '/projekti/$slug',
-  path: '/projekti/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -53,7 +47,6 @@ export interface FileRoutesByFullPath {
   '/o-nas': typeof ONasRoute
   '/ponudba': typeof PonudbaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/projekti/$slug': typeof ProjektiSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -61,7 +54,6 @@ export interface FileRoutesByTo {
   '/o-nas': typeof ONasRoute
   '/ponudba': typeof PonudbaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/projekti/$slug': typeof ProjektiSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -70,33 +62,13 @@ export interface FileRoutesById {
   '/o-nas': typeof ONasRoute
   '/ponudba': typeof PonudbaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/projekti/$slug': typeof ProjektiSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/kontakt'
-    | '/o-nas'
-    | '/ponudba'
-    | '/sitemap.xml'
-    | '/projekti/$slug'
+  fullPaths: '/' | '/kontakt' | '/o-nas' | '/ponudba' | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/kontakt'
-    | '/o-nas'
-    | '/ponudba'
-    | '/sitemap.xml'
-    | '/projekti/$slug'
-  id:
-    | '__root__'
-    | '/'
-    | '/kontakt'
-    | '/o-nas'
-    | '/ponudba'
-    | '/sitemap.xml'
-    | '/projekti/$slug'
+  to: '/' | '/kontakt' | '/o-nas' | '/ponudba' | '/sitemap.xml'
+  id: '__root__' | '/' | '/kontakt' | '/o-nas' | '/ponudba' | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -105,7 +77,6 @@ export interface RootRouteChildren {
   ONasRoute: typeof ONasRoute
   PonudbaRoute: typeof PonudbaRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  ProjektiSlugRoute: typeof ProjektiSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -145,13 +116,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/projekti/$slug': {
-      id: '/projekti/$slug'
-      path: '/projekti/$slug'
-      fullPath: '/projekti/$slug'
-      preLoaderRoute: typeof ProjektiSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -161,7 +125,6 @@ const rootRouteChildren: RootRouteChildren = {
   ONasRoute: ONasRoute,
   PonudbaRoute: PonudbaRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  ProjektiSlugRoute: ProjektiSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

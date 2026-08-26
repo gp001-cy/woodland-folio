@@ -5,7 +5,7 @@ export const Route = createFileRoute("/kontakt")({
   head: () => ({
     meta: [
       { title: "Kontakt — Mizarstvo Šetina" },
-      { name: "description", content: "Kontaktirajte Mizarstvo Šetina za pohištvo po meri. Delavnica v Kranju, Slovenija." },
+      { name: "description", content: "Kontaktirajte Mizarstvo Šetina za pohištvo po meri." },
       { property: "og:title", content: "Kontakt — Mizarstvo Šetina" },
       { property: "og:description", content: "Pišite nam. Odgovorimo v 48 urah." },
     ],
@@ -31,20 +31,13 @@ function Contact() {
         <div className="container-page grid gap-16 md:grid-cols-12 md:gap-20">
           <div className="md:col-span-5 space-y-12">
             <div>
-              <p className="eyebrow mb-4">Delavnica</p>
-              <address className="not-italic text-lg leading-relaxed">
-                Mizarstvo Šetina<br />
-                Obrtna cona 12<br />
-                4000 Kranj, Slovenija
-              </address>
-            </div>
-            <div>
               <p className="eyebrow mb-4">Pišite</p>
+              <p className="font-display text-2xl">Matej Šetina</p>
               <a href="mailto:info@mizarstvosetina.si" className="block font-display text-2xl hover:text-beige-deep">
                 info@mizarstvosetina.si
               </a>
-              <a href="tel:+38641000000" className="mt-2 block font-display text-2xl hover:text-beige-deep">
-                +386 41 000 000
+              <a href="tel:031433903" className="mt-2 block font-display text-2xl hover:text-beige-deep">
+                031 433 903
               </a>
             </div>
             <div>
@@ -58,4 +51,3 @@ function Contact() {
     </SiteLayout>
   );
 }
-

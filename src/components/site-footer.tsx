@@ -33,7 +33,7 @@ export function SiteFooter() {
           <p className="eyebrow mb-5">Delavnica</p>
           <address className="space-y-3 text-sm not-italic text-foreground/70">
             <p>Mizarstvo Šetina<br/>Obrtna cona 12<br/>4000 Kranj, Slovenija</p>
-            <p><a href="mailto:info@setina.si" className="hover:text-foreground">info@setina.si</a></p>
+            <p><a href="mailto:info@mizarstvosetina.si" className="hover:text-foreground">info@mizarstvosetina.si</a></p>
             <p><a href="tel:+38641000000" className="hover:text-foreground">+386 41 000 000</a></p>
           </address>
         </div>

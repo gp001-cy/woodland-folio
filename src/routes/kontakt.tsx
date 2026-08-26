@@ -59,20 +59,3 @@ function Contact() {
   );
 }
 
-function Field({
-  label, name, type = "text", placeholder, required,
-}: { label: string; name: string; type?: string; placeholder?: string; required?: boolean }) {
-  return (
-    <div>
-      <label htmlFor={name} className="eyebrow block">{label}</label>
-      <input
-        id={name}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        required={required}
-        className="mt-3 w-full border-b border-border bg-transparent py-3 text-lg placeholder:text-muted-foreground/60 focus:border-foreground focus:outline-none"
-      />
-    </div>
-  );
-}

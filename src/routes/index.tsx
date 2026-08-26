@@ -56,22 +56,9 @@ function Home() {
             <p className="eyebrow">Filozofija</p>
           </div>
           <div className="md:col-span-8">
-            <h2 className="h-section max-w-3xl text-foreground">
-              Delamo počasi, ker les si tega zasluži.
-            </h2>
-            <div className="mt-10 grid gap-8 text-base leading-relaxed text-foreground/80 md:grid-cols-2 md:text-lg">
-              <p>
-                Vsak kos v naši delavnici začne kot deblo — pogosto iz gozdov,
-                ki jih poznamo po imenu. Sušimo ga leta, preden ga narežemo.
-                Rezemo ga tako, da spoštujemo smer vlaken. Sestavimo ga s
-                spojinami, ki so starejše od strojev.
-              </p>
-              <p>
-                Rezultat ni pohištvo v katalogu. Je predmet, ki bo v vašem
-                prostoru čez pet, deset, petdeset let — in bo takrat lepši kot
-                danes. To je edini razlog, zakaj to delo počnemo.
-              </p>
-            </div>
+            <p className="text-base leading-relaxed text-foreground/80 md:text-lg max-w-3xl">
+              Dobro pohištvo ni le kos opreme, temveč premišljeno oblikovan del prostora. Vsak projekt obravnavamo individualno, prisluhnemo željam stranke in skupaj poiščemo rešitev, ki združuje estetiko, funkcionalnost ter kakovost izdelave. Naš cilj ni izdelati čim več pohištva, pač pa izdelati kose, pod katere se z veseljem podpišemo. Od prve ideje do montaže želimo držati enak standard kakovosti in poskrbeti, da je celoten proces za stranko čim bolj prijeten in brezskrben.
+            </p>
           </div>
         </div>
       </MobileReveal>

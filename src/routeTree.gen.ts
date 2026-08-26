@@ -10,7 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ProjektiRouteImport } from './routes/projekti'
 import { Route as PonudbaRouteImport } from './routes/ponudba'
 import { Route as ONasRouteImport } from './routes/o-nas'
 import { Route as KontaktRouteImport } from './routes/kontakt'
@@ -20,11 +19,6 @@ import { Route as ProjektiSlugRouteImport } from './routes/projekti.$slug'
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjektiRoute = ProjektiRouteImport.update({
-  id: '/projekti',
-  path: '/projekti',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PonudbaRoute = PonudbaRouteImport.update({
@@ -48,9 +42,9 @@ const IndexRoute = IndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjektiSlugRoute = ProjektiSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ProjektiRoute,
+  id: '/projekti/$slug',
+  path: '/projekti/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -58,7 +52,6 @@ export interface FileRoutesByFullPath {
   '/kontakt': typeof KontaktRoute
   '/o-nas': typeof ONasRoute
   '/ponudba': typeof PonudbaRoute
-  '/projekti': typeof ProjektiRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/projekti/$slug': typeof ProjektiSlugRoute
 }
@@ -67,7 +60,6 @@ export interface FileRoutesByTo {
   '/kontakt': typeof KontaktRoute
   '/o-nas': typeof ONasRoute
   '/ponudba': typeof PonudbaRoute
-  '/projekti': typeof ProjektiRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/projekti/$slug': typeof ProjektiSlugRoute
 }
@@ -77,7 +69,6 @@ export interface FileRoutesById {
   '/kontakt': typeof KontaktRoute
   '/o-nas': typeof ONasRoute
   '/ponudba': typeof PonudbaRoute
-  '/projekti': typeof ProjektiRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/projekti/$slug': typeof ProjektiSlugRoute
 }
@@ -88,7 +79,6 @@ export interface FileRouteTypes {
     | '/kontakt'
     | '/o-nas'
     | '/ponudba'
-    | '/projekti'
     | '/sitemap.xml'
     | '/projekti/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -97,7 +87,6 @@ export interface FileRouteTypes {
     | '/kontakt'
     | '/o-nas'
     | '/ponudba'
-    | '/projekti'
     | '/sitemap.xml'
     | '/projekti/$slug'
   id:
@@ -106,7 +95,6 @@ export interface FileRouteTypes {
     | '/kontakt'
     | '/o-nas'
     | '/ponudba'
-    | '/projekti'
     | '/sitemap.xml'
     | '/projekti/$slug'
   fileRoutesById: FileRoutesById
@@ -116,8 +104,8 @@ export interface RootRouteChildren {
   KontaktRoute: typeof KontaktRoute
   ONasRoute: typeof ONasRoute
   PonudbaRoute: typeof PonudbaRoute
-  ProjektiRoute: typeof ProjektiRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ProjektiSlugRoute: typeof ProjektiSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -127,13 +115,6 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/projekti': {
-      id: '/projekti'
-      path: '/projekti'
-      fullPath: '/projekti'
-      preLoaderRoute: typeof ProjektiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ponudba': {
@@ -166,33 +147,21 @@ declare module '@tanstack/react-router' {
     }
     '/projekti/$slug': {
       id: '/projekti/$slug'
-      path: '/$slug'
+      path: '/projekti/$slug'
       fullPath: '/projekti/$slug'
       preLoaderRoute: typeof ProjektiSlugRouteImport
-      parentRoute: typeof ProjektiRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
-
-interface ProjektiRouteChildren {
-  ProjektiSlugRoute: typeof ProjektiSlugRoute
-}
-
-const ProjektiRouteChildren: ProjektiRouteChildren = {
-  ProjektiSlugRoute: ProjektiSlugRoute,
-}
-
-const ProjektiRouteWithChildren = ProjektiRoute._addFileChildren(
-  ProjektiRouteChildren,
-)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   KontaktRoute: KontaktRoute,
   ONasRoute: ONasRoute,
   PonudbaRoute: PonudbaRoute,
-  ProjektiRoute: ProjektiRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ProjektiSlugRoute: ProjektiSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

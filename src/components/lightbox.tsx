@@ -137,6 +137,8 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
           />
         </TransformComponent>
       </TransformWrapper>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }

@@ -48,6 +48,7 @@ export function ImageGallery() {
   };
 
   const onPointerUp = (e: React.PointerEvent) => {
+    console.log("pointerup", startX.current, deltaX.current, didDragRef.current, (e.target as HTMLElement).tagName);
     if (startX.current === null) return;
     const dx = deltaX.current;
     if (dx <= -SWIPE_THRESHOLD) {
@@ -58,6 +59,7 @@ export function ImageGallery() {
       !didDragRef.current &&
       !(e.target as HTMLElement).closest("button")
     ) {
+      console.log("opening lightbox");
       const isMobile = window.innerWidth < 768;
       const src = isMobile ? MOBILE_IMAGES[index] : IMAGES[index];
       setLightboxSrc(src);
@@ -68,6 +70,7 @@ export function ImageGallery() {
     deltaX.current = 0;
     setDragging(false);
   };
+
 
 
   return (

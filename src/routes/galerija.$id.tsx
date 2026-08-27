@@ -152,9 +152,6 @@ function CategoryGallery() {
             </TransformComponent>
           </TransformWrapper>
 
-          <p className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 text-[0.65rem] uppercase tracking-[0.25em] text-bone/60">
-            Dvojni klik ali ščipanje za povečavo
-          </p>
         </div>
       )}
 

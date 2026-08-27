@@ -108,7 +108,7 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
         pinch={{ step: 5 }}
         panning={{ disabled: !zoomed }}
         centerOnInit
-        onTransformed={(_ref, state) => {
+        onTransform={(_ref, state) => {
           scaleRef.current = state.scale;
           setZoomed(state.scale > 1.01);
         }}

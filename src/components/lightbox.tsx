@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 interface LightboxProps {
@@ -7,13 +7,27 @@ interface LightboxProps {
   alt: string;
   open: boolean;
   onClose: () => void;
+  onPrev?: () => void;
+  onNext?: () => void;
 }
 
-export function Lightbox({ src, alt, open, onClose }: LightboxProps) {
+export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxProps) {
+  const scaleRef = useRef(1);
+  const startX = useRef<number | null>(null);
+  const startY = useRef(0);
+  const [zoomed, setZoomed] = useState(false);
+
+  useEffect(() => {
+    scaleRef.current = 1;
+    setZoomed(false);
+  }, [src]);
+
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") onPrev?.();
+      if (e.key === "ArrowRight") onNext?.();
     };
     document.addEventListener("keydown", onKey);
     const prev = document.body.style.overflow;
@@ -22,9 +36,31 @@ export function Lightbox({ src, alt, open, onClose }: LightboxProps) {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prev;
     };
-  }, [open, onClose]);
+  }, [open, onClose, onPrev, onNext]);
 
   if (!open || !src) return null;
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    if (scaleRef.current > 1.01) {
+      startX.current = null;
+      return;
+    }
+    startX.current = e.clientX;
+    startY.current = e.clientY;
+  };
+
+  const handlePointerUp = (e: React.PointerEvent) => {
+    if (startX.current === null || scaleRef.current > 1.01) return;
+    const dx = e.clientX - startX.current;
+    const dy = e.clientY - startY.current;
+    startX.current = null;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) onNext?.();
+      else onPrev?.();
+    }
+  };
+
+  const hasNav = Boolean(onPrev || onNext);
 
   return (
     <div
@@ -41,6 +77,27 @@ export function Lightbox({ src, alt, open, onClose }: LightboxProps) {
         Zapri
       </button>
 
+      {hasNav && (
+        <>
+          <button
+            type="button"
+            onClick={() => onPrev?.()}
+            aria-label="Prejšnja slika"
+            className="absolute top-1/2 left-2 z-20 -translate-y-1/2 cursor-pointer border border-bone/30 bg-ink/50 p-3 text-bone transition-colors hover:bg-bone hover:text-ink md:left-6"
+          >
+            <ChevronLeft className="h-6 w-6 md:h-8 md:w-8" />
+          </button>
+          <button
+            type="button"
+            onClick={() => onNext?.()}
+            aria-label="Naslednja slika"
+            className="absolute top-1/2 right-2 z-20 -translate-y-1/2 cursor-pointer border border-bone/30 bg-ink/50 p-3 text-bone transition-colors hover:bg-bone hover:text-ink md:right-6"
+          >
+            <ChevronRight className="h-6 w-6 md:h-8 md:w-8" />
+          </button>
+        </>
+      )}
+
       <TransformWrapper
         key={src}
         initialScale={1}
@@ -49,7 +106,12 @@ export function Lightbox({ src, alt, open, onClose }: LightboxProps) {
         doubleClick={{ mode: "toggle", step: 1.6 }}
         wheel={{ step: 0.12 }}
         pinch={{ step: 5 }}
+        panning={{ disabled: !zoomed }}
         centerOnInit
+        onTransform={(_ref, state) => {
+          scaleRef.current = state.scale;
+          setZoomed(state.scale > 1.01);
+        }}
       >
         <TransformComponent
           wrapperClass="!h-full !w-full"
@@ -59,6 +121,8 @@ export function Lightbox({ src, alt, open, onClose }: LightboxProps) {
             src={src}
             alt={alt}
             draggable={false}
+            onPointerDown={handlePointerDown}
+            onPointerUp={handlePointerUp}
             className="max-h-[88vh] w-auto max-w-[92vw] object-contain select-none"
           />
         </TransformComponent>

@@ -110,6 +110,18 @@ function CategoryGallery() {
           alt={active.alt}
           open
           onClose={() => setOpenIndex(null)}
+          onPrev={() =>
+            setOpenIndex((i) =>
+              i === null
+                ? null
+                : (i - 1 + category.gallery.length) % category.gallery.length,
+            )
+          }
+          onNext={() =>
+            setOpenIndex((i) =>
+              i === null ? null : (i + 1) % category.gallery.length,
+            )
+          }
         />
       )}
 

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface LightboxProps {
   src: string;
@@ -83,9 +84,9 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
             type="button"
             onClick={() => onPrev?.()}
             aria-label="Prejšnja slika"
-            className="absolute top-1/2 left-2 z-20 -translate-y-1/2 cursor-pointer border border-bone/30 bg-ink/50 p-3 text-bone transition-colors hover:bg-bone hover:text-ink md:left-6"
+            className="absolute top-1/2 left-2 z-20 -translate-y-1/2 cursor-pointer border-none bg-transparent p-2 text-white transition-all duration-200 hover:scale-110 hover:opacity-70 md:left-6"
           >
-            <ChevronLeft className="h-6 w-6 md:h-8 md:w-8" />
+            <ChevronLeft className="h-10 w-10 md:h-12 md:w-12" strokeWidth={1.5} />
           </button>
           <button
             type="button"

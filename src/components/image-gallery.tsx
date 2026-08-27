@@ -81,7 +81,6 @@ export function ImageGallery() {
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
-        onClick={openActiveImage}
       >
         <div
           className="flex transition-all duration-500 ease-in-out"

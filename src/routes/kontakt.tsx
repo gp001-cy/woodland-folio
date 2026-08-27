@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Mail, Phone } from "lucide-react";
 import { SiteLayout } from "@/components/site-layout";
 import { FadeInSection } from "@/components/fade-in-section";
 
@@ -32,12 +33,22 @@ function Contact() {
         <div className="container-page grid gap-16 md:grid-cols-12 md:gap-20">
           <div className="md:col-span-5 space-y-12">
             <FadeInSection>
-              <p className="eyebrow mb-4">Pišite</p>
-              <p className="font-display text-2xl">Matej Šetina</p>
-              <a href="mailto:info@mizarstvosetina.si" className="block font-display text-2xl hover:text-beige-deep">
+              <p className="eyebrow mb-6">Pišite</p>
+              <p className="font-display text-4xl md:text-5xl text-foreground mb-8">
+                Matej Šetina
+              </p>
+              <a
+                href="mailto:info@mizarstvosetina.si"
+                className="group flex items-center gap-4 font-display text-2xl md:text-3xl text-foreground/80 underline decoration-dotted underline-offset-4 hover:text-beige-deep"
+              >
+                <Mail className="h-6 w-6 stroke-1" />
                 info@mizarstvosetina.si
               </a>
-              <a href="tel:031433903" className="mt-2 block font-display text-2xl hover:text-beige-deep">
+              <a
+                href="tel:031433903"
+                className="group mt-5 flex items-center gap-4 font-display text-2xl md:text-3xl text-foreground/80 underline decoration-dotted underline-offset-4 hover:text-beige-deep"
+              >
+                <Phone className="h-6 w-6 stroke-1" />
                 031 433 903
               </a>
             </FadeInSection>

@@ -10,6 +10,7 @@ const SWIPE_THRESHOLD = 50;
 const CLICK_DRAG_THRESHOLD = 10;
 
 export function ImageGallery() {
+  console.log("ImageGallery render");
   const [index, setIndex] = useState(0);
   const [dragging, setDragging] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);

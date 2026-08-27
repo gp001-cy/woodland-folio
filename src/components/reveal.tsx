@@ -1,51 +1,19 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
+
+import { FadeInSection } from "@/components/fade-in-section";
 
 type RevealProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
-  as?: "div" | "section" | "figure" | "article";
+  as?: "div" | "section" | "figure" | "article" | "li" | "header";
 };
 
-export function Reveal({ children, className = "", delay = 0, as = "div" }: RevealProps) {
-  const ref = useRef<HTMLElement | null>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (typeof IntersectionObserver === "undefined") {
-      setVisible(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setVisible(true);
-            io.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  const Tag = as as React.ElementType;
-
+/** Back-compat alias for {@link FadeInSection}. */
+export function Reveal({ children, className, delay, as }: RevealProps) {
   return (
-    <Tag
-      ref={ref as never}
-      style={{ transitionDelay: `${delay}ms` }}
-      className={[
-        "transition-all duration-[900ms] ease-out will-change-transform motion-reduce:transition-none",
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
-        className,
-      ].join(" ")}
-    >
+    <FadeInSection className={className} delay={delay} as={as}>
       {children}
-    </Tag>
+    </FadeInSection>
   );
 }

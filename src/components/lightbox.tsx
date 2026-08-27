@@ -14,8 +14,6 @@ interface LightboxProps {
 
 export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxProps) {
   const scaleRef = useRef(1);
-  const startX = useRef<number | null>(null);
-  const startY = useRef(0);
   const [zoomed, setZoomed] = useState(false);
 
   useEffect(() => {
@@ -41,34 +39,17 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
 
   if (!open || !src) return null;
 
-  const handlePointerDown = (e: React.PointerEvent) => {
-    if (scaleRef.current > 1.01) {
-      startX.current = null;
-      return;
-    }
-    startX.current = e.clientX;
-    startY.current = e.clientY;
-  };
-
-  const handlePointerUp = (e: React.PointerEvent) => {
-    if (startX.current === null || scaleRef.current > 1.01) return;
-    const dx = e.clientX - startX.current;
-    const dy = e.clientY - startY.current;
-    startX.current = null;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
-      if (dx < 0) onNext?.();
-      else onPrev?.();
-    }
-  };
-
   const hasNav = Boolean(onPrev || onNext);
 
   return (
     <div
-      className="fixed inset-0 z-[80] bg-ink/95"
+      className="fixed inset-0 z-[80] cursor-pointer bg-ink/95"
       role="dialog"
       aria-modal="true"
       onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+      onPointerDown={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
@@ -78,6 +59,7 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
           e.stopPropagation();
           onClose();
         }}
+        onPointerDown={(e) => e.stopPropagation()}
         className="absolute top-6 right-6 z-20 flex cursor-pointer items-center gap-2 border border-bone/40 bg-ink/60 px-5 py-3 text-xs uppercase tracking-[0.25em] text-bone transition-colors hover:bg-bone hover:text-ink"
       >
         <X className="h-4 w-4" />
@@ -92,6 +74,7 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
               e.stopPropagation();
               onPrev?.();
             }}
+            onPointerDown={(e) => e.stopPropagation()}
             aria-label="Prejšnja slika"
             className="absolute top-1/2 left-2 z-20 -translate-y-1/2 cursor-pointer border-none bg-transparent p-2 text-white transition-all duration-200 hover:scale-110 hover:opacity-70 md:left-6"
           >
@@ -103,6 +86,7 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
               e.stopPropagation();
               onNext?.();
             }}
+            onPointerDown={(e) => e.stopPropagation()}
             aria-label="Naslednja slika"
             className="absolute top-1/2 right-2 z-20 -translate-y-1/2 cursor-pointer border-none bg-transparent p-2 text-white transition-all duration-200 hover:scale-110 hover:opacity-70 md:right-6"
           >
@@ -123,6 +107,7 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
           <div
             className="pointer-events-auto h-full w-full"
             onClick={(e) => e.stopPropagation()}
+            onPointerDown={(e) => e.stopPropagation()}
           >
             <TransformWrapper
               key={src}
@@ -143,14 +128,30 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
                 wrapperClass="!h-full !w-full"
                 contentClass="!h-full !w-full !flex !items-center !justify-center"
               >
-                <img
-                  src={src}
-                  alt={alt}
-                  draggable={false}
-                  onPointerDown={handlePointerDown}
-                  onPointerUp={handlePointerUp}
-                  className="max-h-[88vh] w-auto max-w-[92vw] object-contain select-none"
-                />
+                <motion.div
+                  key={`drag-${src}`}
+                  drag={!zoomed ? "x" : false}
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={(_, info) => {
+                    if (zoomed) return;
+                    if (info.offset.x < -50 || info.velocity.x < -500) {
+                      onNext?.();
+                    } else if (info.offset.x > 50 || info.velocity.x > 500) {
+                      onPrev?.();
+                    }
+                  }}
+                  onClick={(e) => e.stopPropagation()}
+                  style={{ touchAction: zoomed ? "none" : "pan-y" }}
+                  className="inline-flex max-h-[88vh] max-w-[92vw] items-center justify-center"
+                >
+                  <img
+                    src={src}
+                    alt={alt}
+                    draggable={false}
+                    className="max-h-[88vh] w-auto max-w-[92vw] object-contain select-none"
+                  />
+                </motion.div>
               </TransformComponent>
             </TransformWrapper>
           </div>

@@ -41,8 +41,8 @@ function Contact() {
               </a>
             </div>
             <div>
-              <p className="eyebrow mb-4">Odpiralni čas</p>
-              <p className="text-foreground/80">Po dogovoru<br />Pon — Pet · 8:00 — 16:00</p>
+              <p className="eyebrow mb-4">Odzivni čas</p>
+              <p className="text-foreground/80">Na vsa povpraševanja se potrudimo odgovoriti v roku 24 ur.</p>
             </div>
           </div>
 

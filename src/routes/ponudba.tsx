@@ -6,27 +6,32 @@ import project3 from "@/assets/project-3.jpg";
 import project4 from "@/assets/project-4.jpg";
 import project5 from "@/assets/project-5.jpg";
 import project6 from "@/assets/project-6.jpg";
+import hero1 from "@/assets/hero-1.jpg";
+import wide2 from "@/assets/wide-2.jpg";
 
 export const Route = createFileRoute("/ponudba")({
   head: () => ({
     meta: [
       { title: "Ponudba — Mizarstvo Šetina" },
-      { name: "description", content: "Kuhinje, mize, stopnice, vgradne omare in notranja oprema po meri iz masivnega lesa." },
+      { name: "description", content: "Kuhinje, kopalnice, vgradne omare, predsobe, postelje, stopnice in 3D izrisi po meri iz masivnega lesa." },
       { property: "og:title", content: "Ponudba — Mizarstvo Šetina" },
-      { property: "og:description", content: "Kaj izdelujemo v naši delavnici." },
+      { property: "og:description", content: "Bivalno in stavbno pohištvo po meri." },
     ],
   }),
   component: Offer,
 });
 
 const SERVICES = [
-  { n: "01", t: "Kuhinje po meri", d: "Od zasnove do vgradnje. Masivne fronte, ročno kovani okovi, popolna integracija aparatov.", img: project1 },
-  { n: "02", t: "Mize in klopi", d: "Jedilne mize, pisalne mize, klopi — iz enotnih plošč masivnega lesa ali živih robov.", img: project4 },
-  { n: "03", t: "Vgradne omare", d: "Od stene do stene, prilagojene arhitekturi prostora. Notranjost po vaših navadah.", img: project3 },
-  { n: "04", t: "Stopnice", d: "Konzolne, lebdeče, klasične. V kombinaciji s kovino ali steklom.", img: project2 },
-  { n: "05", t: "Notranja oprema poslovnih prostorov", d: "Recepcije, restavracije, hoteli. Rešitve, ki dvignejo prostor.", img: project6 },
-  { n: "06", t: "Restavriranje", d: "Skrb za stare kose, ki si zaslužijo drugo življenje.", img: project5 },
+  { n: "01", t: "Kuhinje po meri", img: project1 },
+  { n: "02", t: "Kopalnice", img: wide2 },
+  { n: "03", t: "Vgradne omare", img: project3 },
+  { n: "04", t: "Predsobe", img: hero1 },
+  { n: "05", t: "Pohištvo za dnevne in otroške sobe", img: project6 },
+  { n: "06", t: "Postelje", img: project5 },
+  { n: "07", t: "Stopnice", img: project2 },
+  { n: "08", t: "3D Izrisi", img: project4 },
 ];
+
 
 function Offer() {
   return (

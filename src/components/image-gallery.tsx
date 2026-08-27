@@ -16,6 +16,8 @@ export function ImageGallery() {
   const [lightboxSrc, setLightboxSrc] = useState<string>(IMAGES[0]);
   const [lightboxAlt, setLightboxAlt] = useState<string>("");
   const startX = useRef<number | null>(null);
+  const startY = useRef(0);
+  const startTime = useRef(0);
   const deltaX = useRef(0);
   const didDragRef = useRef(false);
 
@@ -33,6 +35,8 @@ export function ImageGallery() {
 
   const onPointerDown = (e: React.PointerEvent) => {
     startX.current = e.clientX;
+    startY.current = e.clientY;
+    startTime.current = Date.now();
     deltaX.current = 0;
     didDragRef.current = false;
     setDragging(true);
@@ -42,7 +46,11 @@ export function ImageGallery() {
   const onPointerMove = (e: React.PointerEvent) => {
     if (startX.current === null) return;
     deltaX.current = e.clientX - startX.current;
-    if (Math.abs(deltaX.current) > CLICK_DRAG_THRESHOLD) {
+    const dy = e.clientY - startY.current;
+    if (
+      Math.abs(deltaX.current) > CLICK_DRAG_THRESHOLD ||
+      Math.abs(dy) > CLICK_DRAG_THRESHOLD
+    ) {
       didDragRef.current = true;
     }
   };
@@ -50,14 +58,17 @@ export function ImageGallery() {
   const onPointerUp = (e: React.PointerEvent) => {
     if (startX.current === null) return;
     const dx = deltaX.current;
+    const dy = e.clientY - startY.current;
+    const moved = Math.hypot(dx, dy);
+    const duration = Date.now() - startTime.current;
+    const isTap =
+      !didDragRef.current && moved <= CLICK_DRAG_THRESHOLD && duration < 500;
+
     if (dx <= -SWIPE_THRESHOLD) {
       next();
     } else if (dx >= SWIPE_THRESHOLD) {
       prev();
-    } else if (
-      !didDragRef.current &&
-      !(e.target as HTMLElement).closest("button")
-    ) {
+    } else if (isTap && !(e.target as HTMLElement).closest("button")) {
       const isMobile = window.innerWidth < 768;
       const src = isMobile ? MOBILE_IMAGES[index] : IMAGES[index];
       setLightboxSrc(src);
@@ -68,6 +79,7 @@ export function ImageGallery() {
     deltaX.current = 0;
     setDragging(false);
   };
+
 
 
 

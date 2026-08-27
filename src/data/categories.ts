@@ -32,7 +32,7 @@ export const categories: Category[] = [
     n: "01",
     title: "Kuhinje po meri",
     description:
-      "Kuhinja je srce doma — zato jo načrtujemo natanko po vaših navadah, prostoru in okusu. Od masivnih front in kamnitih delovnih plošč do skritih predalov in premišljene osvetlitve: vsak detajl je izdelan v naši delavnici in postavljen tako, da bo služil desetletja.",
+      "Kuhinja je prostor, kjer se funkcionalnost neposredno sreča z oblikovanjem. Verjamemo, da je najlepša oblika tista, ki izhaja iz funkcije. Tako kot je letalo lepo zaradi svojih kril, zakrilc in drugih elementov, ki imajo vsak svojo nalogo, ali kot dirkalnik svojo prepoznavno podobo gradi okoli aerodinamike, tudi kuhinja postane dovršena takrat, ko je vsak njen element premišljen in ima svoj namen. Pri naših kuhinjah zato funkcionalnost in estetika ne stojita vsaka zase. Oblike, barve, materiali, okovje in razporeditev skupaj ustvarjajo celoto, v kateri ima vsak element svojo funkcijo – in prav zaradi tega tudi svojo lepoto.",
     coverImage: `${IK}/Kuhinje/naslovna%20k.jpeg`,
     gallery: [
       { src: `${IK}/Kuhinje/k1.jpeg`, alt: "Kuhinja po meri — slika 1" },

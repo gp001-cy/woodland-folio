@@ -54,7 +54,7 @@ export const categories: Category[] = [
     n: "02",
     title: "Kopalnice",
     description:
-      "Kopalniško pohištvo mora prenesti vlago in vsakodnevno rabo, a hkrati ostati mirno in lepo. Uporabljamo obstojne finiše, kakovosten okov in materiale, ki se v vlažnem prostoru ne krivijo — od omaric pod umivalnikom do visokih omar in ogledal po meri.",
+      "Naš cilj je ustvariti kopalnico, v kateri ima vse svoje mesto – in kjer je tudi tisto, kar je namenjeno shranjevanju, del celotne podobe prostora.",
     coverImage: `${IK}/Kopalnice/naslov%20kop.jpeg`,
     gallery: [
       { src: `${IK}/Kopalnice/o1.jpeg`, alt: "Kopalnica po meri — slika 1" },
@@ -80,7 +80,7 @@ export const categories: Category[] = [
     n: "03",
     title: "Vgradne omare",
     description:
-      "Vgradne omare izkoristijo prav vsak centimeter prostora — tudi poševne strope, niše in nenavadne kote. Notranjost načrtujemo skupaj z vami: police, predali, drogovi in predelki so razporejeni po tem, kar zares shranjujete.",
+      "Vgradna omara je kos pohištva, kjer se red začne z dobro osnovo. Tako zunanji izgled združujemo z uporabnostjo v vsakdanjem življenju.",
     coverImage: `${IK}/VgradneOmare/naslov%202.jpeg`,
     gallery: [
       { src: `${IK}/VgradneOmare/naslov%202.jpeg`, alt: "Vgradna omara — naslovna slika" },
@@ -99,7 +99,7 @@ export const categories: Category[] = [
     n: "04",
     title: "Predsobe",
     description:
-      "Predsoba je prvi vtis doma. Ustvarimo mirno, urejeno vstopno točko — s prostorom za obutev, oblačila in vsakodnevne drobnarije, ki naj ostanejo skrite, a vedno pri roki.",
+      "Predsoba je prvi stik z domom, zato mora biti estetsko urejena in pa, seveda, praktična. Izdelujemo garderobne omare, omare za čevlje, obešalne elemente, stenske obloge in druge rešitve po meri.",
     coverImage: `${IK}/Predsobe/naslov%20predso.jpeg`,
     gallery: [
       { src: `${IK}/Predsobe/naslov%20predso.jpeg`, alt: "Predsobno pohištvo po meri — naslovna slika" },

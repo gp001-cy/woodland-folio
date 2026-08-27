@@ -47,29 +47,28 @@ export function ImageGallery() {
     }
   };
 
-  const onPointerUp = () => {
+  const onPointerUp = (e: React.PointerEvent) => {
     if (startX.current === null) return;
-    if (deltaX.current <= -SWIPE_THRESHOLD) next();
-    else if (deltaX.current >= SWIPE_THRESHOLD) prev();
+    const dx = deltaX.current;
+    if (dx <= -SWIPE_THRESHOLD) {
+      next();
+    } else if (dx >= SWIPE_THRESHOLD) {
+      prev();
+    } else if (
+      !didDragRef.current &&
+      !(e.target as HTMLElement).closest("button")
+    ) {
+      const isMobile = window.innerWidth < 768;
+      const src = isMobile ? MOBILE_IMAGES[index] : IMAGES[index];
+      setLightboxSrc(src);
+      setLightboxAlt(`Mizarstvo Šetina — galerija ${index + 1}`);
+      setLightboxOpen(true);
+    }
     startX.current = null;
     deltaX.current = 0;
     setDragging(false);
   };
 
-  const openActiveImage = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (didDragRef.current) {
-      didDragRef.current = false;
-      return;
-    }
-    const target = e.target as HTMLElement;
-    if (target.closest("button")) return;
-
-    const isMobile = window.innerWidth < 768;
-    const src = isMobile ? MOBILE_IMAGES[index] : IMAGES[index];
-    setLightboxSrc(src);
-    setLightboxAlt(`Mizarstvo Šetina — galerija ${index + 1}`);
-    setLightboxOpen(true);
-  };
 
   return (
     <>

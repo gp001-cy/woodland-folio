@@ -92,9 +92,9 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
             type="button"
             onClick={() => onNext?.()}
             aria-label="Naslednja slika"
-            className="absolute top-1/2 right-2 z-20 -translate-y-1/2 cursor-pointer border border-bone/30 bg-ink/50 p-3 text-bone transition-colors hover:bg-bone hover:text-ink md:right-6"
+            className="absolute top-1/2 right-2 z-20 -translate-y-1/2 cursor-pointer border-none bg-transparent p-2 text-white transition-all duration-200 hover:scale-110 hover:opacity-70 md:right-6"
           >
-            <ChevronRight className="h-6 w-6 md:h-8 md:w-8" />
+            <ChevronRight className="h-10 w-10 md:h-12 md:w-12" strokeWidth={1.5} />
           </button>
         </>
       )}

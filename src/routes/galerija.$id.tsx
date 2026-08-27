@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { X } from "lucide-react";
+import { ArrowLeft, X } from "lucide-react";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { SiteLayout } from "@/components/site-layout";
 import { getCategory } from "@/data/categories";
 
@@ -57,18 +58,29 @@ function CategoryGallery() {
   return (
     <SiteLayout>
       <section className="pt-40 pb-12 md:pt-56 md:pb-16">
-        <div className="container-page grid gap-8 md:grid-cols-12">
-          <div className="md:col-span-3">
-            <p className="eyebrow">Ponudba / {category.n}</p>
+        <div className="container-page">
+          <div className="flex w-full items-center justify-between">
+            <p className="eyebrow">Ponudba / {category.title}</p>
+            <Link
+              to="/ponudba"
+              aria-label="Nazaj na ponudbo"
+              className="group inline-flex items-center text-foreground transition-opacity hover:opacity-60"
+            >
+              <ArrowLeft className="h-6 w-6 transition-transform duration-300 group-hover:-translate-x-1" />
+            </Link>
           </div>
-          <div className="md:col-span-9">
-            <h1 className="h-display">{category.title}</h1>
-            <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              {category.description}
-            </p>
+
+          <div className="mt-8 grid gap-8 md:mt-12 md:grid-cols-12">
+            <div className="md:col-span-12">
+              <h1 className="h-display">{category.title}</h1>
+              <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+                {category.description}
+              </p>
+            </div>
           </div>
         </div>
       </section>
+
 
       <section className="pb-24 md:pb-40">
         <div className="container-page">
@@ -104,27 +116,48 @@ function CategoryGallery() {
 
       {active && (
         <div
-          className="fixed inset-0 z-[80] flex items-center justify-center bg-ink/95 p-4"
+          className="fixed inset-0 z-[80] bg-ink/95"
           role="dialog"
           aria-modal="true"
-          onClick={() => setOpenIndex(null)}
         >
           <button
             type="button"
             onClick={() => setOpenIndex(null)}
-            className="absolute top-6 right-6 z-10 flex cursor-pointer items-center gap-2 border border-bone/40 px-5 py-3 text-xs uppercase tracking-[0.25em] text-bone transition-colors hover:bg-bone hover:text-ink"
+            className="absolute top-6 right-6 z-20 flex cursor-pointer items-center gap-2 border border-bone/40 bg-ink/60 px-5 py-3 text-xs uppercase tracking-[0.25em] text-bone transition-colors hover:bg-bone hover:text-ink"
           >
             <X className="h-4 w-4" />
             Zapri
           </button>
-          <img
-            src={active.src}
-            alt={active.alt}
-            onClick={(e) => e.stopPropagation()}
-            className="max-h-[85vh] w-auto max-w-full object-contain"
-          />
+
+          <TransformWrapper
+            key={openIndex}
+            initialScale={1}
+            minScale={1}
+            maxScale={5}
+            doubleClick={{ mode: "toggle", step: 1.6 }}
+            wheel={{ step: 0.12 }}
+            pinch={{ step: 5 }}
+            centerOnInit
+          >
+            <TransformComponent
+              wrapperClass="!h-full !w-full"
+              contentClass="!h-full !w-full !flex !items-center !justify-center"
+            >
+              <img
+                src={active.src}
+                alt={active.alt}
+                draggable={false}
+                className="max-h-[88vh] w-auto max-w-[92vw] object-contain select-none"
+              />
+            </TransformComponent>
+          </TransformWrapper>
+
+          <p className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 text-[0.65rem] uppercase tracking-[0.25em] text-bone/60">
+            Dvojni klik ali ščipanje za povečavo
+          </p>
         </div>
       )}
+
     </SiteLayout>
   );
 }

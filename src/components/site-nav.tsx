@@ -13,11 +13,28 @@ export function SiteNav() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    if (!open) return;
+    const scrollY = window.scrollY;
+    const body = document.body;
+    const prev = {
+      position: body.style.position,
+      top: body.style.top,
+      width: body.style.width,
+      overflow: body.style.overflow,
+    };
+    body.style.position = "fixed";
+    body.style.top = `-${scrollY}px`;
+    body.style.width = "100%";
+    body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = "";
+      body.style.position = prev.position;
+      body.style.top = prev.top;
+      body.style.width = prev.width;
+      body.style.overflow = prev.overflow;
+      window.scrollTo(0, scrollY);
     };
   }, [open]);
+
 
   return (
     <>
@@ -77,10 +94,12 @@ export function SiteNav() {
 
       {/* Mobile fullscreen menu */}
       <div
-        className={`fixed inset-0 z-[60] h-[100svh] w-screen bg-beige transition-opacity duration-500 md:hidden ${
+        style={{ height: "100dvh" }}
+        className={`fixed inset-0 z-[60] min-h-screen w-screen overflow-hidden overscroll-contain touch-none bg-beige transition-opacity duration-500 md:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
+
         <button
           type="button"
           aria-label="Zapri meni"

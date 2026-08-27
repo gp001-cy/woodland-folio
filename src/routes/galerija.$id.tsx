@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { X } from "lucide-react";
+import { ArrowLeft, X } from "lucide-react";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { SiteLayout } from "@/components/site-layout";
 import { getCategory } from "@/data/categories";
 

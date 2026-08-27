@@ -18,18 +18,7 @@ export const Route = createFileRoute("/ponudba")({
 function Offer() {
   return (
     <SiteLayout>
-      <section className="pt-40 pb-16 md:pt-56 md:pb-24">
-        <FadeInSection className="container-page grid gap-8 md:grid-cols-12">
-          <div className="md:col-span-2">
-            <p className="eyebrow">Ponudba</p>
-          </div>
-          <div className="md:col-span-10">
-            <h1 className="h-display">Bivalno in stavbno pohištvo,<br />pod katere spada:</h1>
-          </div>
-        </FadeInSection>
-      </section>
-
-      <section className="pb-24 md:pb-40">
+      <section className="pt-40 pb-24 md:pt-56 md:pb-40">
         <div className="container-page">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-x-12 md:gap-y-20">
             {categories.map((c, i) => (

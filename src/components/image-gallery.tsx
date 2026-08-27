@@ -10,7 +10,6 @@ const SWIPE_THRESHOLD = 50;
 const CLICK_DRAG_THRESHOLD = 10;
 
 export function ImageGallery() {
-  console.log("ImageGallery render");
   const [index, setIndex] = useState(0);
   const [dragging, setDragging] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -49,7 +48,6 @@ export function ImageGallery() {
   };
 
   const onPointerUp = (e: React.PointerEvent) => {
-    console.log("pointerup", startX.current, deltaX.current, didDragRef.current, (e.target as HTMLElement).tagName);
     if (startX.current === null) return;
     const dx = deltaX.current;
     if (dx <= -SWIPE_THRESHOLD) {
@@ -60,7 +58,6 @@ export function ImageGallery() {
       !didDragRef.current &&
       !(e.target as HTMLElement).closest("button")
     ) {
-      console.log("opening lightbox");
       const isMobile = window.innerWidth < 768;
       const src = isMobile ? MOBILE_IMAGES[index] : IMAGES[index];
       setLightboxSrc(src);

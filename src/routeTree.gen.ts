@@ -14,6 +14,7 @@ import { Route as PonudbaRouteImport } from './routes/ponudba'
 import { Route as ONasRouteImport } from './routes/o-nas'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GalerijaIdRouteImport } from './routes/galerija.$id'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -40,6 +41,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GalerijaIdRoute = GalerijaIdRouteImport.update({
+  id: '/galerija/$id',
+  path: '/galerija/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/o-nas': typeof ONasRoute
   '/ponudba': typeof PonudbaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/galerija/$id': typeof GalerijaIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/o-nas': typeof ONasRoute
   '/ponudba': typeof PonudbaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/galerija/$id': typeof GalerijaIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +70,33 @@ export interface FileRoutesById {
   '/o-nas': typeof ONasRoute
   '/ponudba': typeof PonudbaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/galerija/$id': typeof GalerijaIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/kontakt' | '/o-nas' | '/ponudba' | '/sitemap.xml'
+  fullPaths:
+    | '/'
+    | '/kontakt'
+    | '/o-nas'
+    | '/ponudba'
+    | '/sitemap.xml'
+    | '/galerija/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/kontakt' | '/o-nas' | '/ponudba' | '/sitemap.xml'
-  id: '__root__' | '/' | '/kontakt' | '/o-nas' | '/ponudba' | '/sitemap.xml'
+  to:
+    | '/'
+    | '/kontakt'
+    | '/o-nas'
+    | '/ponudba'
+    | '/sitemap.xml'
+    | '/galerija/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/kontakt'
+    | '/o-nas'
+    | '/ponudba'
+    | '/sitemap.xml'
+    | '/galerija/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,6 +105,7 @@ export interface RootRouteChildren {
   ONasRoute: typeof ONasRoute
   PonudbaRoute: typeof PonudbaRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  GalerijaIdRoute: typeof GalerijaIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -116,6 +145,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/galerija/$id': {
+      id: '/galerija/$id'
+      path: '/galerija/$id'
+      fullPath: '/galerija/$id'
+      preLoaderRoute: typeof GalerijaIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -125,6 +161,7 @@ const rootRouteChildren: RootRouteChildren = {
   ONasRoute: ONasRoute,
   PonudbaRoute: PonudbaRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  GalerijaIdRoute: GalerijaIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

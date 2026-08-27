@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { X } from "lucide-react";
 import { SiteLayout } from "@/components/site-layout";
-import { categories, getCategory } from "@/data/categories";
+import { getCategory } from "@/data/categories";
 
 export const Route = createFileRoute("/galerija/$id")({
   loader: ({ params }) => {
@@ -128,5 +128,3 @@ function CategoryGallery() {
     </SiteLayout>
   );
 }
-
-export const categoryIds = categories.map((c) => c.id);

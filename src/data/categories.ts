@@ -99,7 +99,7 @@ export const categories: Category[] = [
     n: "04",
     title: "Predsobe",
     description:
-      "Predsoba je prvi stik z domom, zato mora biti estetsko urejena in pa, seveda, praktična. Izdelujemo garderobne omare, omare za čevlje, obešalne elemente, stenske obloge in druge rešitve po meri.",
+      "Predsoba je prvi stik z domom, zato mora biti estetsko urejena in pa seveda praktična. Izdelujemo garderobne omare, omare za čevlje, obešalne elemente, stenske obloge in druge rešitve po meri.",
     coverImage: `${IK}/Predsobe/naslov%20predso.jpeg`,
     gallery: [
       { src: `${IK}/Predsobe/naslov%20predso.jpeg`, alt: "Predsobno pohištvo po meri — naslovna slika" },
@@ -149,7 +149,7 @@ export const categories: Category[] = [
     title: "Pohištvo za dnevne in otroške sobe",
     description:
       "Za dnevne in otroške sobe izdelujemo pohištvo, ki raste z družino — TV omarice, knjižne stene, pisalne mize in shrambne rešitve, ki so trdne, varne in dovolj prilagodljive za spreminjajoče se potrebe.",
-    coverImage: `${IK}/Dnevne/naslovdnevne.jpeg`,
+    coverImage: `${IK}/naslovdnevne.jpeg`,
     gallery: [
       { src: project6, alt: "Pohištvo za dnevno sobo po meri" },
       { src: project3, alt: "Knjižna stena v dnevni sobi" },
@@ -165,7 +165,7 @@ export const categories: Category[] = [
     title: "Stopnice",
     description:
       "Stopnice so konstrukcijski in oblikovni izziv hkrati. Izdelujemo masivne, lebdeče in obložene stopnice — natančno izmerjene, statično preverjene in zaključene s finišem, ki prenese vsakodnevno hojo.",
-    coverImage: `${IK}/Stopnice/naslovstopnice.jpeg`,
+    coverImage: `${IK}/naslovstopnice.jpeg`,
     gallery: [
       { src: project2, alt: "Lebdeče stopnice iz masivnega oreha" },
       { src: wide1, alt: "Stopnišče z leseno oblogo" },

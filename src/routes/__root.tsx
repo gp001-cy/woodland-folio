@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
+import { PageTransition } from "@/components/page-transition";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 

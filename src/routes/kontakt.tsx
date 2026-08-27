@@ -33,22 +33,22 @@ function Contact() {
         <div className="container-page grid gap-16 md:grid-cols-12 md:gap-20">
           <div className="md:col-span-5 space-y-12">
             <FadeInSection>
-              <p className="eyebrow mb-6">Pišite</p>
-              <p className="font-display text-4xl md:text-5xl text-foreground mb-8">
+              <p className="eyebrow mb-4">Pišite</p>
+              <p className="font-display text-2xl text-foreground mb-4">
                 Matej Šetina
               </p>
               <a
                 href="mailto:info@mizarstvosetina.si"
-                className="group flex items-center gap-4 font-display text-2xl md:text-3xl text-foreground/80 underline decoration-dotted underline-offset-4 hover:text-beige-deep"
+                className="group flex items-center gap-3 font-display text-2xl text-foreground/80 underline decoration-dotted underline-offset-4 hover:text-beige-deep"
               >
-                <Mail className="h-6 w-6 stroke-1" />
+                <Mail className="h-5 w-5 stroke-1" />
                 info@mizarstvosetina.si
               </a>
               <a
                 href="tel:031433903"
-                className="group mt-5 flex items-center gap-4 font-display text-2xl md:text-3xl text-foreground/80 underline decoration-dotted underline-offset-4 hover:text-beige-deep"
+                className="group mt-3 flex items-center gap-3 font-display text-2xl text-foreground/80 underline decoration-dotted underline-offset-4 hover:text-beige-deep"
               >
-                <Phone className="h-6 w-6 stroke-1" />
+                <Phone className="h-5 w-5 stroke-1" />
                 031 433 903
               </a>
             </FadeInSection>

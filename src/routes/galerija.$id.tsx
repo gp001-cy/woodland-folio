@@ -57,18 +57,29 @@ function CategoryGallery() {
   return (
     <SiteLayout>
       <section className="pt-40 pb-12 md:pt-56 md:pb-16">
-        <div className="container-page grid gap-8 md:grid-cols-12">
-          <div className="md:col-span-3">
-            <p className="eyebrow">Ponudba / {category.n}</p>
+        <div className="container-page">
+          <div className="flex w-full items-center justify-between">
+            <p className="eyebrow">Ponudba / {category.title}</p>
+            <Link
+              to="/ponudba"
+              aria-label="Nazaj na ponudbo"
+              className="group inline-flex items-center text-foreground transition-opacity hover:opacity-60"
+            >
+              <ArrowLeft className="h-6 w-6 transition-transform duration-300 group-hover:-translate-x-1" />
+            </Link>
           </div>
-          <div className="md:col-span-9">
-            <h1 className="h-display">{category.title}</h1>
-            <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              {category.description}
-            </p>
+
+          <div className="mt-8 grid gap-8 md:mt-12 md:grid-cols-12">
+            <div className="md:col-span-12">
+              <h1 className="h-display">{category.title}</h1>
+              <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+                {category.description}
+              </p>
+            </div>
           </div>
         </div>
       </section>
+
 
       <section className="pb-24 md:pb-40">
         <div className="container-page">

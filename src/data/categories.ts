@@ -58,6 +58,7 @@ export const categories: Category[] = [
       { src: "/Kopalnice/o1.jpeg", alt: "Kopalnica po meri — slika 1" },
       { src: "/Kopalnice/o2.jpeg", alt: "Kopalnica po meri — slika 2" },
       { src: "/Kopalnice/o3.jpeg", alt: "Kopalnica po meri — slika 3" },
+      { src: "/Kopalnice/naslov kop.jpeg", alt: "Kopalnica po meri — naslovna slika" },
       { src: "/Kopalnice/o4.jpeg", alt: "Kopalnica po meri — slika 4" },
       { src: "/Kopalnice/o5.jpeg", alt: "Kopalnica po meri — slika 5" },
       { src: "/Kopalnice/o6.jpeg", alt: "Kopalnica po meri — slika 6" },

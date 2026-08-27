@@ -23,19 +23,19 @@ export const Route = createFileRoute("/")({
 
 const REVIEWS = [
   {
-    text: "Šetina ne dela pohištva — dela dediščino. Miza, ki smo jo naročili pri njih, bo v družini ostala dlje kot mi sami.",
+    text: "Odlično svetovanje in izvedba brez kompliciranja. Rezultat je točno to, kar smo iskali.",
     author: "Ana K.",
-    place: "Ljubljana",
+    place: "Ljubljana - Bežigrad",
   },
   {
-    text: "Popolna natančnost, brez kompromisov. Vsak detajl je premišljen, vsaka spojina brezhibna.",
-    author: "arh. Matej P.",
-    place: "Studio MP",
+    text: "Znali so prisluhniti našim željam in predlagali pametne izboljšave, na katere sami nismo pomislili.",
+    author: "Leon",
+    place: "Ljubljana - Šiška",
   },
   {
-    text: "Vzeli so si čas. Poslušali. In naredili točno to, kar smo si predstavljali — samo lepše.",
-    author: "Nina in Rok",
-    place: "Bled",
+    text: "Vzeli so si čas. Poslušali. In naredili točno to, kar smo si predstavljali.",
+    author: "Matjaž S.",
+    place: "Kamnik",
   },
 ];
 
@@ -54,7 +54,7 @@ function Home() {
         <div className="container-page grid gap-12 md:grid-cols-12 md:gap-16">
           <div className="md:col-span-4">
             <p className="eyebrow">Filozofija</p>
-            <h2 className="h-section mt-4 max-w-sm">Več kot le pohištvo</h2>
+            <h2 className="h-section mt-4 max-w-sm">Poslušamo, svetujemo, ustvarjamo</h2>
           </div>
           <div className="md:col-span-8">
             <p className="text-base leading-relaxed text-foreground/80 md:text-lg max-w-3xl">
@@ -82,8 +82,8 @@ function Home() {
       <section className="bg-bone py-24 md:py-40">
         <div className="container-page">
           <FadeInSection>
-            <p className="eyebrow">Naročniki</p>
-            <h2 className="h-section mt-4 max-w-3xl">Besede tistih, ki živijo z našim delom.</h2>
+            <p className="eyebrow">Stranke</p>
+            <h2 className="h-section mt-4 max-w-3xl">Besede naših strank</h2>
           </FadeInSection>
 
           <div className="mt-16 grid gap-10 md:grid-cols-3 md:gap-12">

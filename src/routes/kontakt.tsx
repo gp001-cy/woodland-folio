@@ -23,7 +23,7 @@ function Contact() {
             <p className="eyebrow">Kontakt</p>
           </div>
           <div className="md:col-span-10">
-            <h1 className="h-display">Povejte<br />nam o<br />projektu.</h1>
+            <h1 className="h-display">Začnimo<br />vaš<br />projekt.</h1>
           </div>
         </FadeInSection>
       </section>
@@ -40,10 +40,6 @@ function Contact() {
               <a href="tel:031433903" className="mt-2 block font-display text-2xl hover:text-beige-deep">
                 031 433 903
               </a>
-            </FadeInSection>
-            <FadeInSection delay={120}>
-              <p className="eyebrow mb-4">Odzivni čas</p>
-              <p className="text-foreground/80">Na vsa povpraševanja se potrudimo odgovoriti v roku 24 ur.</p>
             </FadeInSection>
           </div>
 

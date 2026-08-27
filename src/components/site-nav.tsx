@@ -94,10 +94,12 @@ export function SiteNav() {
 
       {/* Mobile fullscreen menu */}
       <div
-        className={`fixed inset-0 z-[60] h-[100svh] w-screen bg-beige transition-opacity duration-500 md:hidden ${
+        style={{ height: "100dvh" }}
+        className={`fixed inset-0 z-[60] min-h-screen w-screen overflow-hidden overscroll-contain touch-none bg-beige transition-opacity duration-500 md:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
+
         <button
           type="button"
           aria-label="Zapri meni"

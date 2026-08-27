@@ -43,71 +43,55 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
 
   return (
     <div
-      className="fixed inset-0 z-[80] cursor-pointer bg-ink/95"
+      className="fixed inset-0 z-[80] flex items-center justify-center"
       role="dialog"
       aria-modal="true"
-      onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
-      }}
-      onPointerDown={(e) => {
-        if (e.target === e.currentTarget) onClose();
-      }}
     >
-      <button
-        type="button"
-        onClick={(e) => {
-          e.stopPropagation();
-          onClose();
-        }}
-        onPointerDown={(e) => e.stopPropagation()}
-        className="absolute top-6 right-6 z-20 flex cursor-pointer items-center gap-2 border border-bone/40 bg-ink/60 px-5 py-3 text-xs uppercase tracking-[0.25em] text-bone transition-colors hover:bg-bone hover:text-ink"
-      >
-        <X className="h-4 w-4" />
-        Zapri
-      </button>
+      <div
+        className="absolute inset-0 cursor-pointer bg-black/95"
+        onClick={onClose}
+        aria-label="Zapri galerijo"
+      />
 
-      {hasNav && (
-        <>
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              onPrev?.();
-            }}
-            onPointerDown={(e) => e.stopPropagation()}
-            aria-label="Prejšnja slika"
-            className="absolute top-1/2 left-2 z-20 -translate-y-1/2 cursor-pointer border-none bg-transparent p-2 text-white transition-all duration-200 hover:scale-110 hover:opacity-70 md:left-6"
-          >
-            <ChevronLeft className="h-10 w-10 md:h-12 md:w-12" strokeWidth={1.5} />
-          </button>
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              onNext?.();
-            }}
-            onPointerDown={(e) => e.stopPropagation()}
-            aria-label="Naslednja slika"
-            className="absolute top-1/2 right-2 z-20 -translate-y-1/2 cursor-pointer border-none bg-transparent p-2 text-white transition-all duration-200 hover:scale-110 hover:opacity-70 md:right-6"
-          >
-            <ChevronRight className="h-10 w-10 md:h-12 md:w-12" strokeWidth={1.5} />
-          </button>
-        </>
-      )}
-
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={src}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="pointer-events-none h-full w-full"
+      <div className="pointer-events-none relative z-10 flex h-full w-full items-center justify-center">
+        <button
+          type="button"
+          onClick={onClose}
+          className="pointer-events-auto absolute top-6 right-6 z-20 flex cursor-pointer items-center gap-2 border border-bone/40 bg-ink/60 px-5 py-3 text-xs uppercase tracking-[0.25em] text-bone transition-colors hover:bg-bone hover:text-ink"
         >
-          <div
-            className="pointer-events-auto h-full w-full"
-            onClick={(e) => e.stopPropagation()}
-            onPointerDown={(e) => e.stopPropagation()}
+          <X className="h-4 w-4" />
+          Zapri
+        </button>
+
+        {hasNav && (
+          <>
+            <button
+              type="button"
+              onClick={onPrev}
+              aria-label="Prejšnja slika"
+              className="pointer-events-auto absolute top-1/2 left-2 z-20 -translate-y-1/2 cursor-pointer border-none bg-transparent p-2 text-white transition-all duration-200 hover:scale-110 hover:opacity-70 md:left-6"
+            >
+              <ChevronLeft className="h-10 w-10 md:h-12 md:w-12" strokeWidth={1.5} />
+            </button>
+            <button
+              type="button"
+              onClick={onNext}
+              aria-label="Naslednja slika"
+              className="pointer-events-auto absolute top-1/2 right-2 z-20 -translate-y-1/2 cursor-pointer border-none bg-transparent p-2 text-white transition-all duration-200 hover:scale-110 hover:opacity-70 md:right-6"
+            >
+              <ChevronRight className="h-10 w-10 md:h-12 md:w-12" strokeWidth={1.5} />
+            </button>
+          </>
+        )}
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={src}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="pointer-events-none h-full w-full"
           >
             <TransformWrapper
               key={src}
@@ -125,8 +109,8 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
               }}
             >
               <TransformComponent
-                wrapperClass="!h-full !w-full"
-                contentClass="!h-full !w-full !flex !items-center !justify-center"
+                wrapperClass="!pointer-events-none !h-full !w-full"
+                contentClass="!pointer-events-none !h-full !w-full !flex !items-center !justify-center"
               >
                 <motion.div
                   key={`drag-${src}`}
@@ -142,21 +126,24 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
                     }
                   }}
                   onClick={(e) => e.stopPropagation()}
+                  onPointerDown={(e) => e.stopPropagation()}
                   style={{ touchAction: zoomed ? "none" : "pan-y" }}
-                  className="inline-flex max-h-[88vh] max-w-[92vw] items-center justify-center"
+                  className="pointer-events-auto inline-flex max-h-[88vh] max-w-[92vw] items-center justify-center"
                 >
                   <img
                     src={src}
                     alt={alt}
                     draggable={false}
+                    onClick={(e) => e.stopPropagation()}
+                    onPointerDown={(e) => e.stopPropagation()}
                     className="max-h-[88vh] w-auto max-w-[92vw] object-contain select-none"
                   />
                 </motion.div>
               </TransformComponent>
             </TransformWrapper>
-          </div>
-        </motion.div>
-      </AnimatePresence>
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

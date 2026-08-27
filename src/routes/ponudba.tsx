@@ -22,8 +22,6 @@ export const Route = createFileRoute("/ponudba")({
 });
 
 const SERVICES = [
-  { n: "01", t: "Kuhinje po meri", img: project1 },
-  { n: "02", t: "Kopalnice", img: wide2 },
   { n: "03", t: "Vgradne omare", img: project3 },
   { n: "04", t: "Predsobe", img: hero1 },
   { n: "05", t: "Pohištvo za dnevne in otroške sobe", img: project6 },
@@ -50,6 +48,30 @@ function Offer() {
       <section className="pb-24 md:pb-40">
         <div className="container-page">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-x-12 md:gap-y-20">
+            {categories.map((c) => (
+              <Link
+                key={c.id}
+                to="/galerija/$id"
+                params={{ id: c.id }}
+                className="group block transition-opacity duration-300 hover:opacity-90"
+              >
+                <div className="aspect-[4/3] overflow-hidden bg-muted">
+                  <img
+                    src={c.cover}
+                    alt={c.title}
+                    width={1600}
+                    height={1200}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.05]"
+                  />
+                </div>
+                <div className="mt-6">
+                  <span className="font-display text-lg text-beige-deep">{c.n}</span>
+                  <h2 className="mt-2 font-display text-3xl font-light leading-tight md:text-4xl">{c.title}</h2>
+                </div>
+              </Link>
+            ))}
+
             {SERVICES.map((s) => (
               <article key={s.n} className="group">
                 <div className="aspect-[4/3] overflow-hidden bg-muted">
@@ -69,6 +91,7 @@ function Offer() {
               </article>
             ))}
           </div>
+
 
 
           <div className="mt-24 text-center md:mt-40">

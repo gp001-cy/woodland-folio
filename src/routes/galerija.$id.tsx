@@ -115,27 +115,48 @@ function CategoryGallery() {
 
       {active && (
         <div
-          className="fixed inset-0 z-[80] flex items-center justify-center bg-ink/95 p-4"
+          className="fixed inset-0 z-[80] bg-ink/95"
           role="dialog"
           aria-modal="true"
-          onClick={() => setOpenIndex(null)}
         >
           <button
             type="button"
             onClick={() => setOpenIndex(null)}
-            className="absolute top-6 right-6 z-10 flex cursor-pointer items-center gap-2 border border-bone/40 px-5 py-3 text-xs uppercase tracking-[0.25em] text-bone transition-colors hover:bg-bone hover:text-ink"
+            className="absolute top-6 right-6 z-20 flex cursor-pointer items-center gap-2 border border-bone/40 bg-ink/60 px-5 py-3 text-xs uppercase tracking-[0.25em] text-bone transition-colors hover:bg-bone hover:text-ink"
           >
             <X className="h-4 w-4" />
             Zapri
           </button>
-          <img
-            src={active.src}
-            alt={active.alt}
-            onClick={(e) => e.stopPropagation()}
-            className="max-h-[85vh] w-auto max-w-full object-contain"
-          />
+
+          <TransformWrapper
+            key={openIndex}
+            initialScale={1}
+            minScale={1}
+            maxScale={5}
+            doubleClick={{ mode: "toggle", step: 1.6 }}
+            wheel={{ step: 0.12 }}
+            pinch={{ step: 5 }}
+            centerOnInit
+          >
+            <TransformComponent
+              wrapperClass="!h-full !w-full"
+              contentClass="!h-full !w-full !flex !items-center !justify-center"
+            >
+              <img
+                src={active.src}
+                alt={active.alt}
+                draggable={false}
+                className="max-h-[88vh] w-auto max-w-[92vw] object-contain select-none"
+              />
+            </TransformComponent>
+          </TransformWrapper>
+
+          <p className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 text-[0.65rem] uppercase tracking-[0.25em] text-bone/60">
+            Dvojni klik ali ščipanje za povečavo
+          </p>
         </div>
       )}
+
     </SiteLayout>
   );
 }

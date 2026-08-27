@@ -99,6 +99,15 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
         </>
       )}
 
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={src}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="h-full w-full"
+        >
       <TransformWrapper
         key={src}
         initialScale={1}

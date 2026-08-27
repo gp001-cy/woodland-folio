@@ -132,9 +132,9 @@ export const categories: Category[] = [
     title: "Postelje",
     description:
       "Postelja po meri pomeni pravo velikost, pravo višino in zgradbo, ki ne škripa. Vzglavja oblazinimo ali izdelamo iz masivnega lesa, pod ležiščem pa po želji skrijemo prostoren predal za shranjevanje.",
-    coverImage: `${IK}/Postelje/naslov%20postleja.jpeg`,
+    coverImage: `${IK}/Postelje/naslv%20postleja.jpeg`,
     gallery: [
-      { src: `${IK}/Postelje/naslov%20postleja.jpeg`, alt: "Postelja po meri — naslovna slika" },
+      { src: `${IK}/Postelje/naslv%20postleja.jpeg`, alt: "Postelja po meri — naslovna slika" },
       { src: `${IK}/Postelje/p1.jpeg`, alt: "Postelja po meri — slika 1" },
       { src: `${IK}/Postelje/p2.jpeg`, alt: "Postelja po meri — slika 2" },
       { src: `${IK}/Postelje/p3.jpeg`, alt: "Postelja po meri — slika 3" },

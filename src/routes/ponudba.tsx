@@ -1,13 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
-import project1 from "@/assets/project-1.jpg";
+import { categories } from "@/data/categories";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
 import project4 from "@/assets/project-4.jpg";
 import project5 from "@/assets/project-5.jpg";
 import project6 from "@/assets/project-6.jpg";
 import hero1 from "@/assets/hero-1.jpg";
-import wide2 from "@/assets/wide-2.jpg";
 
 export const Route = createFileRoute("/ponudba")({
   head: () => ({

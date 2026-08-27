@@ -53,14 +53,15 @@ export const categories: Category[] = [
     title: "Kopalnice",
     description:
       "Kopalniško pohištvo mora prenesti vlago in vsakodnevno rabo, a hkrati ostati mirno in lepo. Uporabljamo obstojne finiše, kakovosten okov in materiale, ki se v vlažnem prostoru ne krivijo — od omaric pod umivalnikom do visokih omar in ogledal po meri.",
-    coverImage: wide2,
+    coverImage: "/Kopalnice/naslov kop.jpeg",
     gallery: [
-      { src: wide2, alt: "Kopalniška omarica z lončenim umivalnikom" },
-      { src: project5, alt: "Zaobljena kopalniška omarica iz hrasta" },
-      { src: hero2, alt: "Kopalniško pohištvo z mat črnim okovom" },
-      { src: project4, alt: "Ogledalo in polica po meri v kopalnici" },
-      { src: hero3, alt: "Detajl vodoodpornega finiša na lesu" },
-      { src: wide1, alt: "Visoka kopalniška omara po meri" },
+      { src: "/Kopalnice/o1.jpeg", alt: "Kopalnica po meri — slika 1" },
+      { src: "/Kopalnice/o2.jpeg", alt: "Kopalnica po meri — slika 2" },
+      { src: "/Kopalnice/o3.jpeg", alt: "Kopalnica po meri — slika 3" },
+      { src: "/Kopalnice/o4.jpeg", alt: "Kopalnica po meri — slika 4" },
+      { src: "/Kopalnice/o5.jpeg", alt: "Kopalnica po meri — slika 5" },
+      { src: "/Kopalnice/o6.jpeg", alt: "Kopalnica po meri — slika 6" },
+      { src: "/Kopalnice/o7.jpeg", alt: "Kopalnica po meri — slika 7" },
     ],
   },
   {

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { SiteLayout } from "@/components/site-layout";
+import { FadeInSection } from "@/components/fade-in-section";
 import { Lightbox } from "@/components/lightbox";
 import { getCategory } from "@/data/categories";
 
@@ -46,7 +47,7 @@ function CategoryGallery() {
   return (
     <SiteLayout>
       <section className="pt-40 pb-12 md:pt-56 md:pb-16">
-        <div className="container-page">
+        <FadeInSection className="container-page">
           <div className="flex w-full items-center justify-between">
             <p className="eyebrow">Ponudba / {category.title}</p>
             <Link
@@ -66,7 +67,7 @@ function CategoryGallery() {
               </p>
             </div>
           </div>
-        </div>
+        </FadeInSection>
       </section>
 
 
@@ -74,8 +75,8 @@ function CategoryGallery() {
         <div className="container-page">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6">
             {category.gallery.map((img, i) => (
+              <FadeInSection key={`${img.src}-${i}`} delay={(i % 3) * 120}>
               <button
-                key={`${img.src}-${i}`}
                 type="button"
                 onClick={() => setOpenIndex(i)}
                 className="group aspect-square cursor-pointer overflow-hidden bg-muted"
@@ -88,17 +89,18 @@ function CategoryGallery() {
                   className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
                 />
               </button>
+              </FadeInSection>
             ))}
           </div>
 
-          <div className="mt-20 text-center md:mt-32">
+          <FadeInSection className="mt-20 text-center md:mt-32">
             <Link
               to="/ponudba"
               className="inline-flex items-center gap-3 border border-foreground px-8 py-4 text-sm uppercase tracking-[0.25em] transition-colors hover:bg-foreground hover:text-background"
             >
               Nazaj na ponudbo
             </Link>
-          </div>
+          </FadeInSection>
         </div>
       </section>
 

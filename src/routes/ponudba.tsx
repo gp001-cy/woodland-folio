@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
+import { FadeInSection } from "@/components/fade-in-section";
 import { categories } from "@/data/categories";
 
 export const Route = createFileRoute("/ponudba")({
@@ -18,22 +19,22 @@ function Offer() {
   return (
     <SiteLayout>
       <section className="pt-40 pb-16 md:pt-56 md:pb-24">
-        <div className="container-page grid gap-8 md:grid-cols-12">
+        <FadeInSection className="container-page grid gap-8 md:grid-cols-12">
           <div className="md:col-span-2">
             <p className="eyebrow">Ponudba</p>
           </div>
           <div className="md:col-span-10">
             <h1 className="h-display">Bivalno in stavbno pohištvo,<br />pod katere spada:</h1>
           </div>
-        </div>
+        </FadeInSection>
       </section>
 
       <section className="pb-24 md:pb-40">
         <div className="container-page">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-x-12 md:gap-y-20">
-            {categories.map((c) => (
+            {categories.map((c, i) => (
+              <FadeInSection key={c.id} delay={(i % 2) * 120}>
               <Link
-                key={c.id}
                 to="/galerija/$id"
                 params={{ id: c.id }}
                 className="group block transition-opacity duration-300 hover:opacity-90"
@@ -53,13 +54,14 @@ function Offer() {
                   <h2 className="mt-2 font-display text-3xl font-light leading-tight md:text-4xl">{c.title}</h2>
                 </div>
               </Link>
+              </FadeInSection>
             ))}
           </div>
 
 
 
 
-          <div className="mt-24 text-center md:mt-40">
+          <FadeInSection className="mt-24 text-center md:mt-40">
             <p className="eyebrow">Pripravljeni?</p>
             <h2 className="h-section mt-6">Pogovorimo se o vašem projektu.</h2>
             <Link
@@ -68,7 +70,7 @@ function Offer() {
             >
               Kontaktirajte nas
             </Link>
-          </div>
+          </FadeInSection>
         </div>
       </section>
     </SiteLayout>

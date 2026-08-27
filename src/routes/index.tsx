@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
-import { Reveal } from "@/components/reveal";
+import { FadeInSection } from "@/components/fade-in-section";
 import { ImageGallery } from "@/components/image-gallery";
 import { MobileReveal } from "@/components/mobile-reveal";
 
@@ -66,7 +66,7 @@ function Home() {
 
 
       {/* Full-width image break */}
-      <Reveal as="section" className="relative h-[60vh] w-full overflow-hidden md:h-[85vh]">
+      <FadeInSection as="section" className="relative h-[60vh] w-full overflow-hidden md:h-[85vh]">
         <img
           src={wide1}
           alt="Delavnica Šetina"
@@ -75,18 +75,20 @@ function Home() {
           loading="lazy"
           className="h-full w-full object-cover"
         />
-      </Reveal>
+      </FadeInSection>
 
 
       {/* REVIEWS */}
       <section className="bg-bone py-24 md:py-40">
         <div className="container-page">
-          <p className="eyebrow">Naročniki</p>
-          <h2 className="h-section mt-4 max-w-3xl">Besede tistih, ki živijo z našim delom.</h2>
+          <FadeInSection>
+            <p className="eyebrow">Naročniki</p>
+            <h2 className="h-section mt-4 max-w-3xl">Besede tistih, ki živijo z našim delom.</h2>
+          </FadeInSection>
 
           <div className="mt-16 grid gap-10 md:grid-cols-3 md:gap-12">
             {REVIEWS.map((r, i) => (
-              <Reveal as="figure" key={i} delay={i * 120} className="flex flex-col">
+              <FadeInSection as="figure" key={i} delay={i * 120} className="flex flex-col">
                 <blockquote className="font-display text-xl leading-[1.35] text-foreground md:text-2xl">
                   <span aria-hidden className="text-beige-deep">“</span>
                   {r.text}
@@ -96,14 +98,14 @@ function Home() {
                   <span className="text-foreground">{r.author}</span>
                   <span className="text-muted-foreground"> · {r.place}</span>
                 </figcaption>
-              </Reveal>
+              </FadeInSection>
             ))}
           </div>
         </div>
       </section>
 
       {/* BIG IMAGE */}
-      <Reveal as="section" className="relative h-[70vh] w-full overflow-hidden md:h-[95vh]">
+      <FadeInSection as="section" className="relative h-[70vh] w-full overflow-hidden md:h-[95vh]">
         <img
           src={project4}
           alt="Živi rob orehove mize"
@@ -112,11 +114,11 @@ function Home() {
           loading="lazy"
           className="h-full w-full object-cover"
         />
-      </Reveal>
+      </FadeInSection>
 
       {/* CLOSING QUOTE */}
       <section className="bg-background py-32 md:py-40">
-        <Reveal className="container-page">
+        <FadeInSection className="container-page">
           <blockquote className="mx-auto max-w-5xl text-center">
             <p className="font-display text-4xl font-light leading-[1.05] tracking-tight md:text-7xl">
               <span className="text-beige-deep">„</span>Les si zapomni vse —
@@ -135,7 +137,7 @@ function Home() {
               Začnimo projekt
             </Link>
           </div>
-        </Reveal>
+        </FadeInSection>
       </section>
     </SiteLayout>
   );

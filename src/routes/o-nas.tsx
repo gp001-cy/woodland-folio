@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
+import { FadeInSection } from "@/components/fade-in-section";
 import portrait from "@/assets/about-portrait.jpg";
 import wide1 from "@/assets/wide-1.jpg";
 
@@ -19,7 +20,7 @@ function About() {
   return (
     <SiteLayout>
       <section className="pt-40 pb-16 md:pt-56 md:pb-24">
-        <div className="container-page grid gap-8 md:grid-cols-12">
+        <FadeInSection className="container-page grid gap-8 md:grid-cols-12">
           <div className="md:col-span-2">
             <p className="eyebrow">O nas</p>
           </div>
@@ -28,12 +29,12 @@ function About() {
               Družina,<br />delavnica,<br />les.
             </h1>
           </div>
-        </div>
+        </FadeInSection>
       </section>
 
       <section className="py-16 md:py-24">
         <div className="container-page grid gap-12 md:grid-cols-12 md:gap-16">
-          <div className="md:col-span-5">
+          <FadeInSection className="md:col-span-5">
             <img
               src={portrait}
               alt="Marko Šetina"
@@ -45,18 +46,18 @@ function About() {
             <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground">
               Marko Šetina — ustanovitelj
             </p>
-          </div>
-          <div className="md:col-span-7 md:pt-12">
+          </FadeInSection>
+          <FadeInSection delay={120} className="md:col-span-7 md:pt-12">
             <div className="space-y-6 text-lg leading-relaxed text-foreground/85">
               <p>
                 Dobro pohištvo ni le kos opreme, temveč premišljeno oblikovan del prostora. Vsak projekt obravnavamo individualno, prisluhnemo željam stranke in skupaj poiščemo rešitev, ki združuje estetiko, funkcionalnost ter kakovost izdelave. Naš cilj ni izdelati čim več pohištva, pač pa izdelati kose, pod katere se z veseljem podpišemo. Od prve ideje do montaže želimo držati enak standard kakovosti in poskrbeti, da je celoten proces za stranko čim bolj prijeten in brezskrben.
               </p>
             </div>
-          </div>
+          </FadeInSection>
         </div>
       </section>
 
-      <section className="relative h-[60vh] w-full overflow-hidden md:h-[80vh]">
+      <FadeInSection as="section" className="relative h-[60vh] w-full overflow-hidden md:h-[80vh]">
         <img
           src={wide1}
           alt="Delavnica"
@@ -65,13 +66,13 @@ function About() {
           loading="lazy"
           className="h-full w-full object-cover"
         />
-      </section>
+      </FadeInSection>
 
       <section className="py-24 md:py-40">
         <div className="container-page grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-4">
+          <FadeInSection className="md:col-span-4">
             <p className="eyebrow">Načela</p>
-          </div>
+          </FadeInSection>
           <div className="md:col-span-8 space-y-16">
             {[
               { n: "01", t: "Premišljeno oblikovanje prostora", d: "Pohištva ne obravnavamo kot izoliranega kosa, temveč kot ključen element, ki sooblikuje vaš bivalni ali delovni ambient. Ustvarjamo rešitve, ki prostor povežejo in mu dodajo vrednost." },
@@ -79,14 +80,14 @@ function About() {
               { n: "03", t: "Zavezništvo estetike, funkcionalnosti in kakovosti", d: "Verjamemo, da lepota ne sme sklepati kompromisov pri uporabnosti. Naši izdelki so vizualno dovršeni, prijazni za uporabo in izdelani iz materialov, ki zagotavljajo dolgo življenjsko dobo." },
               { n: "04", t: "Kakovost pred kvantiteto", d: "Naš cilj ni serijska proizvodnja, temveč ustvarjanje unikatnih kosov. Izdelujemo le tisto pohištvo, pod katerega se z največjim ponosom in veseljem podpišemo." },
               { n: "05", t: "Brezskrbna izkušnja od A do Ž", d: "Prevzamemo odgovornost za celoten proces – od prve ideje in izrisa do končne montaže. Ohranjamo dosleden standard kakovosti na vsakem koraku in skrbimo, da je pot do vašega novega pohištva prijetna in popolnoma brez stresa." },
-            ].map((p) => (
-              <div key={p.n} className="grid grid-cols-[auto_1fr] gap-6 border-t border-border/60 pt-8 md:grid-cols-[80px_1fr] md:gap-10">
+            ].map((p, i) => (
+              <FadeInSection key={p.n} delay={i * 100} className="grid grid-cols-[auto_1fr] gap-6 border-t border-border/60 pt-8 md:grid-cols-[80px_1fr] md:gap-10">
                 <span className="font-display text-2xl text-beige-deep">{p.n}</span>
                 <div>
                   <h3 className="font-display text-2xl md:text-3xl">{p.t}</h3>
                   <p className="mt-3 max-w-xl text-foreground/75">{p.d}</p>
                 </div>
-              </div>
+              </FadeInSection>
             ))}
           </div>
         </div>

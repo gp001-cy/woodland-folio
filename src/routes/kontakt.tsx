@@ -25,7 +25,7 @@ function Contact() {
           <div className="md:col-span-10">
             <h1 className="h-display">Povejte<br />nam o<br />projektu.</h1>
           </div>
-        </div>
+        </FadeInSection>
       </section>
 
       <section className="pb-24 md:pb-40">

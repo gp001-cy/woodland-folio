@@ -29,7 +29,7 @@ const REVIEWS = [
   },
   {
     text: "Znali so prisluhniti našim željam in predlagali pametne izboljšave, na katere sami nismo pomislili.",
-    author: "Leon",
+    author: "Leon B.",
     place: "Ljubljana - Šiška",
   },
   {
@@ -125,7 +125,7 @@ function Home() {
               roko, ki ga je obdelala, in dom, v katerega je odšel.<span className="text-beige-deep">”</span>
             </p>
             <footer className="mt-10 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-              — Marko Šetina, mojster mizar
+              — Matej Šetina
             </footer>
           </blockquote>
 

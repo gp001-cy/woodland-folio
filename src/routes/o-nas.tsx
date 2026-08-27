@@ -18,7 +18,7 @@ export const Route = createFileRoute("/o-nas")({
 function About() {
   return (
     <SiteLayout>
-      <section className="pt-40 pb-16 md:pt-56 md:pb-24">
+      <section className="pt-40 pb-8 md:pt-56 md:pb-12">
         <FadeInSection className="container-page grid gap-8 md:grid-cols-12">
           <div className="md:col-span-2">
             <p className="eyebrow">O nas</p>
@@ -31,7 +31,7 @@ function About() {
         </FadeInSection>
       </section>
 
-      <section className="py-16 md:py-24">
+      <section className="pt-8 pb-16 md:pt-12 md:pb-24">
         <div className="container-page grid gap-12 md:grid-cols-12 md:gap-16">
           <FadeInSection delay={120} className="md:col-span-12 md:pt-12">
             <div className="space-y-6 text-lg leading-relaxed text-foreground/85">

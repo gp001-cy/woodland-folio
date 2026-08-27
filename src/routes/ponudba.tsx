@@ -20,6 +20,9 @@ function Offer() {
     <SiteLayout>
       <section className="pt-40 pb-24 md:pt-56 md:pb-40">
         <div className="container-page">
+          <FadeInSection className="mb-12">
+            <p className="eyebrow">Ponudba</p>
+          </FadeInSection>
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-x-12 md:gap-y-20">
             {categories.map((c, i) => (
               <FadeInSection key={c.id} delay={(i % 2) * 120}>

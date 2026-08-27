@@ -90,24 +90,8 @@ export const categories: Category[] = [
     ],
   },
   {
-    id: "dnevne-otroske-sobe",
-    n: "05",
-    title: "Pohištvo za dnevne in otroške sobe",
-    description:
-      "Za dnevne in otroške sobe izdelujemo pohištvo, ki raste z družino — TV omarice, knjižne stene, pisalne mize in shrambne rešitve, ki so trdne, varne in dovolj prilagodljive za spreminjajoče se potrebe.",
-    coverImage: project6,
-    gallery: [
-      { src: project6, alt: "Pohištvo za dnevno sobo po meri" },
-      { src: project3, alt: "Knjižna stena v dnevni sobi" },
-      { src: wide1, alt: "TV omarica iz masivnega lesa" },
-      { src: project1, alt: "Pisalna miza po meri v otroški sobi" },
-      { src: hero3, alt: "Police in shramba v otroški sobi" },
-      { src: project4, alt: "Detajl lesene površine v dnevnem prostoru" },
-    ],
-  },
-  {
     id: "postelje",
-    n: "06",
+    n: "05",
     title: "Postelje",
     description:
       "Postelja po meri pomeni pravo velikost, pravo višino in zgradbo, ki ne škripa. Vzglavja oblazinimo ali izdelamo iz masivnega lesa, pod ležiščem pa po želji skrijemo prostoren predal za shranjevanje.",
@@ -119,6 +103,22 @@ export const categories: Category[] = [
       { src: wide1, alt: "Predal za shranjevanje pod ležiščem" },
       { src: hero2, alt: "Detajl lesene konstrukcije postelje" },
       { src: portrait, alt: "Ročna obdelava lesa za posteljo" },
+    ],
+  },
+  {
+    id: "dnevne-otroske-sobe",
+    n: "06",
+    title: "Pohištvo za dnevne in otroške sobe",
+    description:
+      "Za dnevne in otroške sobe izdelujemo pohištvo, ki raste z družino — TV omarice, knjižne stene, pisalne mize in shrambne rešitve, ki so trdne, varne in dovolj prilagodljive za spreminjajoče se potrebe.",
+    coverImage: project6,
+    gallery: [
+      { src: project6, alt: "Pohištvo za dnevno sobo po meri" },
+      { src: project3, alt: "Knjižna stena v dnevni sobi" },
+      { src: wide1, alt: "TV omarica iz masivnega lesa" },
+      { src: project1, alt: "Pisalna miza po meri v otroški sobi" },
+      { src: hero3, alt: "Police in shramba v otroški sobi" },
+      { src: project4, alt: "Detajl lesene površine v dnevnem prostoru" },
     ],
   },
   {

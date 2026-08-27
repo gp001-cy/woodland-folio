@@ -31,7 +31,7 @@ export const categories: Category[] = [
     title: "Kuhinje po meri",
     description:
       "Kuhinja je srce doma — zato jo načrtujemo natanko po vaših navadah, prostoru in okusu. Od masivnih front in kamnitih delovnih plošč do skritih predalov in premišljene osvetlitve: vsak detajl je izdelan v naši delavnici in postavljen tako, da bo služil desetletja.",
-    coverImage: "/kuhinje/naslovna k.jpeg",
+    coverImage: "/kuhinje/k1.jpeg",
     gallery: [
       { src: "/kuhinje/k1.jpeg", alt: "Kuhinja po meri — slika 1" },
       { src: "/kuhinje/k2.jpeg", alt: "Kuhinja po meri — slika 2" },
@@ -43,7 +43,6 @@ export const categories: Category[] = [
       { src: "/kuhinje/k8.jpeg", alt: "Kuhinja po meri — slika 8" },
       { src: "/kuhinje/k9.jpeg", alt: "Kuhinja po meri — slika 9" },
       { src: "/kuhinje/k10.jpeg", alt: "Kuhinja po meri — slika 10" },
-      { src: "/kuhinje/k11.jpeg", alt: "Kuhinja po meri — slika 11" },
     ],
   },
   {

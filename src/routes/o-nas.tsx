@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { FadeInSection } from "@/components/fade-in-section";
-import wide1 from "@/assets/wide-1.jpg";
+import workshopImageAsset from "@/assets/image-8.png.asset.json";
 
 export const Route = createFileRoute("/o-nas")({
   head: () => ({

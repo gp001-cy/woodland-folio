@@ -107,7 +107,7 @@ function CategoryGallery() {
       {active && (
         <Lightbox
           src={active.src}
-          alt={`${category.title} - slika ${openIndex + 1}`}
+          alt={`${category.title} - slika ${(openIndex ?? 0) + 1}`}
           open
           onClose={() => setOpenIndex(null)}
           onPrev={() =>

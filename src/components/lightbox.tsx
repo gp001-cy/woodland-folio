@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useControls } from "react-zoom-pan-pinch";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { AnimatePresence, motion } from "framer-motion";
@@ -12,9 +13,61 @@ interface LightboxProps {
   onNext?: () => void;
 }
 
-function isTouchDevice() {
-  if (typeof window === "undefined") return false;
-  return window.matchMedia("(hover: none)").matches || window.innerWidth < 768;
+interface ZoomableImageProps {
+  src: string;
+  alt: string;
+  zoomed: boolean;
+  onPrev?: () => void;
+  onNext?: () => void;
+  scaleRef: React.MutableRefObject<number>;
+}
+
+function ZoomableImage({
+  src,
+  alt,
+  zoomed,
+  onPrev,
+  onNext,
+  scaleRef,
+}: ZoomableImageProps) {
+  const { setTransform } = useControls();
+
+  return (
+    <motion.div
+      key={`drag-${src}`}
+      drag={!zoomed ? "x" : false}
+      dragConstraints={{ left: 0, right: 0 }}
+      dragElastic={0.2}
+      onDragEnd={(_, info) => {
+        if (zoomed) return;
+        if (info.offset.x < -50 || info.velocity.x < -500) {
+          onNext?.();
+        } else if (info.offset.x > 50 || info.velocity.x > 500) {
+          onPrev?.();
+        }
+      }}
+      onClick={(e) => e.stopPropagation()}
+      onPointerDown={(e) => e.stopPropagation()}
+      onDoubleClick={() => {
+        if (scaleRef.current > 1.01) {
+          setTransform(0, 0, 1);
+        } else {
+          setTransform(0, 0, 2.5);
+        }
+      }}
+      style={{ touchAction: zoomed ? "none" : "pan-y" }}
+      className="pointer-events-auto inline-flex max-h-[88vh] max-w-[92vw] items-center justify-center"
+    >
+      <img
+        src={src}
+        alt={alt}
+        draggable={false}
+        onClick={(e) => e.stopPropagation()}
+        onPointerDown={(e) => e.stopPropagation()}
+        className="max-h-[88vh] w-auto max-w-[92vw] object-contain select-none"
+      />
+    </motion.div>
+  );
 }
 
 export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxProps) {
@@ -109,11 +162,7 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
               initialScale={1}
               minScale={1}
               maxScale={5}
-              doubleClick={
-                isTouchDevice()
-                  ? { disabled: true }
-                  : { mode: "toggle", step: 1.6 }
-              }
+              doubleClick={{ disabled: true }}
               wheel={{ step: 0.12 }}
               pinch={{ step: 5 }}
               panning={{ disabled: !zoomed }}
@@ -127,33 +176,14 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
                 wrapperClass="!pointer-events-none !h-full !w-full"
                 contentClass="!pointer-events-none !h-full !w-full !flex !items-center !justify-center"
               >
-                <motion.div
-                  key={`drag-${src}`}
-                  drag={!zoomed ? "x" : false}
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.2}
-                  onDragEnd={(_, info) => {
-                    if (zoomed) return;
-                    if (info.offset.x < -50 || info.velocity.x < -500) {
-                      onNext?.();
-                    } else if (info.offset.x > 50 || info.velocity.x > 500) {
-                      onPrev?.();
-                    }
-                  }}
-                  onClick={(e) => e.stopPropagation()}
-                  onPointerDown={(e) => e.stopPropagation()}
-                  style={{ touchAction: zoomed ? "none" : "pan-y" }}
-                  className="pointer-events-auto inline-flex max-h-[88vh] max-w-[92vw] items-center justify-center"
-                >
-                  <img
-                    src={src}
-                    alt={alt}
-                    draggable={false}
-                    onClick={(e) => e.stopPropagation()}
-                    onPointerDown={(e) => e.stopPropagation()}
-                    className="max-h-[88vh] w-auto max-w-[92vw] object-contain select-none"
-                  />
-                </motion.div>
+                <ZoomableImage
+                  src={src}
+                  alt={alt}
+                  zoomed={zoomed}
+                  onPrev={onPrev}
+                  onNext={onNext}
+                  scaleRef={scaleRef}
+                />
               </TransformComponent>
             </TransformWrapper>
           </motion.div>

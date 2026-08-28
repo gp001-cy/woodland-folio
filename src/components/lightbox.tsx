@@ -187,6 +187,7 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
                   src={src}
                   alt={alt}
                   zoomed={zoomed}
+                  onClose={onClose}
                   onPrev={onPrev}
                   onNext={onNext}
                   scaleRef={scaleRef}

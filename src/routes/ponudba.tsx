@@ -35,7 +35,7 @@ function Offer() {
                     <div className="aspect-square overflow-hidden bg-muted">
                       <img
                         src={c.coverImage}
-                        alt={c.title}
+                        alt={`${c.title} - naslovna slika`}
                         width={1600}
                         height={1600}
                         loading="lazy"
@@ -52,7 +52,7 @@ function Offer() {
                     <div className="aspect-square overflow-hidden bg-muted">
                       <img
                         src={c.coverImage}
-                        alt={c.title}
+                        alt={`${c.title} - naslovna slika`}
                         width={1600}
                         height={1600}
                         loading="lazy"

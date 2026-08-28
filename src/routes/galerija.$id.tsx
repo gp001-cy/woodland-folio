@@ -80,11 +80,11 @@ function CategoryGallery() {
                 type="button"
                 onClick={() => setOpenIndex(i)}
                 className="group aspect-square cursor-pointer overflow-hidden bg-muted"
-                aria-label={`Odpri sliko: ${img.alt}`}
+                aria-label={`Odpri sliko: ${category.title} - slika ${i + 1}`}
               >
                 <img
                   src={img.src}
-                  alt={img.alt}
+                  alt={`${category.title} - slika ${i + 1}`}
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
                 />
@@ -107,7 +107,7 @@ function CategoryGallery() {
       {active && (
         <Lightbox
           src={active.src}
-          alt={active.alt}
+          alt={`${category.title} - slika ${openIndex + 1}`}
           open
           onClose={() => setOpenIndex(null)}
           onPrev={() =>

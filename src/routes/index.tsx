@@ -12,8 +12,8 @@ import workshopImageAsset from "@/assets/image-8.png.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Mizarstvo Šetina — Ročno izdelano pohištvo po meri" },
-      { name: "description", content: "Slovenska mizarska delavnica: kuhinje, stopnice, mize in notranja oprema iz masivnega lesa." },
+      { title: "Mizarstvo Šetina" },
+      { name: "description", content: "Mizarstvo Šetina izdeluje pohištvo po meri iz kvalitetnih materialov. Prilagajamo se vašim željam, meri prostora, skrbimo za funkcionalnost in udobje." },
     ],
   }),
   component: Home,

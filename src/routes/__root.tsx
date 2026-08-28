@@ -54,25 +54,27 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+import ogImageAsset from "../assets/onlynatler-2.png.asset.json";
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Mizarstvo Šetina — Ročno izdelano pohištvo po meri" },
-      { name: "description", content: "Mizarstvo Šetina: ročno izdelano pohištvo po meri iz masivnega lesa. Kuhinje, stopnice, notranja oprema po meri v Sloveniji." },
-      { property: "og:title", content: "Mizarstvo Šetina — Ročno izdelano pohištvo po meri" },
-      { property: "og:description", content: "Mizarstvo Šetina: ročno izdelano pohištvo po meri iz masivnega lesa. Kuhinje, stopnice, notranja oprema po meri v Sloveniji." },
+      { title: "Mizarstvo Šetina" },
+      { name: "description", content: "Mizarstvo Šetina izdeluje pohištvo po meri iz kvalitetnih materialov. Prilagajamo se vašim željam, meri prostora, skrbimo za funkcionalnost in udobje." },
+      { property: "og:title", content: "Mizarstvo Šetina" },
+      { property: "og:description", content: "Mizarstvo Šetina izdeluje pohištvo po meri iz kvalitetnih materialov. Prilagajamo se vašim željam, meri prostora, skrbimo za funkcionalnost in udobje." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Mizarstvo Šetina — Ročno izdelano pohištvo po meri" },
-      { name: "twitter:description", content: "Mizarstvo Šetina: ročno izdelano pohištvo po meri iz masivnega lesa. Kuhinje, stopnice, notranja oprema po meri v Sloveniji." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e19bf96c-35e4-468e-85f6-5e74795fb76e/id-preview-eba7678c--46f3f4d9-839a-4df6-b555-776492cb626b.lovable.app-1783095084929.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e19bf96c-35e4-468e-85f6-5e74795fb76e/id-preview-eba7678c--46f3f4d9-839a-4df6-b555-776492cb626b.lovable.app-1783095084929.png" },
+      { name: "twitter:title", content: "Mizarstvo Šetina" },
+      { name: "twitter:description", content: "Mizarstvo Šetina izdeluje pohištvo po meri iz kvalitetnih materialov. Prilagajamo se vašim željam, meri prostora, skrbimo za funkcionalnost in udobje." },
+      { property: "og:image", content: ogImageAsset.url },
+      { name: "twitter:image", content: ogImageAsset.url },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
       {

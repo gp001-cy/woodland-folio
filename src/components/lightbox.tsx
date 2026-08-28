@@ -109,7 +109,11 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
               initialScale={1}
               minScale={1}
               maxScale={5}
-              doubleClick={{ mode: "toggle", step: 1.6 }}
+              doubleClick={
+                isTouchDevice()
+                  ? { disabled: true }
+                  : { mode: "toggle", step: 1.6 }
+              }
               wheel={{ step: 0.12 }}
               pinch={{ step: 5 }}
               panning={{ disabled: !zoomed }}

@@ -17,6 +17,7 @@ interface ZoomableImageProps {
   src: string;
   alt: string;
   zoomed: boolean;
+  onClose?: () => void;
   onPrev?: () => void;
   onNext?: () => void;
   scaleRef: React.MutableRefObject<number>;
@@ -26,6 +27,7 @@ function ZoomableImage({
   src,
   alt,
   zoomed,
+  onClose,
   onPrev,
   onNext,
   scaleRef,
@@ -35,14 +37,19 @@ function ZoomableImage({
   return (
     <motion.div
       key={`drag-${src}`}
-      drag={!zoomed ? "x" : false}
-      dragConstraints={{ left: 0, right: 0 }}
+      drag={!zoomed}
+      dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
       dragElastic={0.2}
+      dragSnapToOrigin
       onDragEnd={(_, info) => {
         if (zoomed) return;
-        if (info.offset.x < -50 || info.velocity.x < -500) {
+        const absX = Math.abs(info.offset.x);
+        const absY = Math.abs(info.offset.y);
+        if (absY > absX && info.offset.y > 80) {
+          onClose?.();
+        } else if (absX > absY && (info.offset.x < -50 || info.velocity.x < -500)) {
           onNext?.();
-        } else if (info.offset.x > 50 || info.velocity.x > 500) {
+        } else if (absX > absY && (info.offset.x > 50 || info.velocity.x > 500)) {
           onPrev?.();
         }
       }}
@@ -55,7 +62,7 @@ function ZoomableImage({
           setTransform(0, 0, 2.5);
         }
       }}
-      style={{ touchAction: zoomed ? "none" : "pan-y" }}
+      style={{ touchAction: "none" }}
       className="pointer-events-auto inline-flex max-h-[88vh] max-w-[92vw] items-center justify-center"
     >
       <img

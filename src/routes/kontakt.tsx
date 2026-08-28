@@ -33,7 +33,7 @@ function Contact() {
         <div className="container-page grid gap-16 md:grid-cols-12 md:gap-20">
           <div className="md:col-span-5 space-y-12">
             <FadeInSection>
-              <p className="eyebrow mb-4">Pišite</p>
+              <p className="eyebrow mb-4">KONTAKTIRAJTE NAS</p>
               <p className="font-display text-2xl text-foreground mb-4">
                 Matej Šetina
               </p>

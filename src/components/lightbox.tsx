@@ -197,11 +197,14 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
               <TransformComponent
                 wrapperClass="!pointer-events-none !h-full !w-full"
                 contentClass="!pointer-events-none !h-full !w-full !flex !items-center !justify-center"
+                contentStyle={{ transformOrigin }}
               >
                 <ZoomableImage
                   src={src}
                   alt={alt}
                   zoomed={zoomed}
+                  transformOrigin={transformOrigin}
+                  setTransformOrigin={setTransformOrigin}
                   onClose={onClose}
                   onPrev={onPrev}
                   onNext={onNext}

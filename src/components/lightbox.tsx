@@ -197,36 +197,36 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
               pinch={{ step: 5 }}
               panning={{ disabled: !zoomed }}
               centerOnInit
-              onPinchStart={() => setTransformOrigin("50% 50%")}
               onTransform={(ref, state) => {
                 scaleRef.current = state.scale;
+                stateRef.current = {
+                  scale: state.scale,
+                  x: state.positionX,
+                  y: state.positionY,
+                };
                 const isZoomed = state.scale > 1.01;
                 setZoomed(isZoomed);
-                if (!isZoomed) {
-                  setTransformOrigin("50% 50%");
-                  if (state.positionX !== 0 || state.positionY !== 0) {
-                    ref.setTransform(0, 0, 1);
-                  }
+                if (!isZoomed && (state.positionX !== 0 || state.positionY !== 0)) {
+                  ref.setTransform(0, 0, 1, 0);
                 }
               }}
             >
               <TransformComponent
                 wrapperClass="!pointer-events-none !h-full !w-full"
                 contentClass="!pointer-events-none !h-full !w-full !flex !items-center !justify-center"
-                contentStyle={{ transformOrigin }}
               >
                 <ZoomableImage
                   src={src}
                   alt={alt}
                   zoomed={zoomed}
-                  transformOrigin={transformOrigin}
-                  setTransformOrigin={setTransformOrigin}
                   onClose={onClose}
                   onPrev={onPrev}
                   onNext={onNext}
                   scaleRef={scaleRef}
+                  stateRef={stateRef}
                 />
               </TransformComponent>
+
             </TransformWrapper>
           </motion.div>
         </AnimatePresence>

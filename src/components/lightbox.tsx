@@ -189,9 +189,17 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
               pinch={{ step: 5 }}
               panning={{ disabled: !zoomed }}
               centerOnInit
-              onTransform={(_ref, state) => {
+              onPinchStart={() => setTransformOrigin("50% 50%")}
+              onTransform={(ref, state) => {
                 scaleRef.current = state.scale;
-                setZoomed(state.scale > 1.01);
+                const isZoomed = state.scale > 1.01;
+                setZoomed(isZoomed);
+                if (!isZoomed) {
+                  setTransformOrigin("50% 50%");
+                  if (state.positionX !== 0 || state.positionY !== 0) {
+                    ref.setTransform(0, 0, 1);
+                  }
+                }
               }}
             >
               <TransformComponent

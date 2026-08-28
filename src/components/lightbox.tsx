@@ -12,6 +12,11 @@ interface LightboxProps {
   onNext?: () => void;
 }
 
+function isTouchDevice() {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(hover: none)").matches || window.innerWidth < 768;
+}
+
 export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxProps) {
   const scaleRef = useRef(1);
   const [zoomed, setZoomed] = useState(false);
@@ -49,7 +54,11 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
     >
       <div
         className="absolute inset-0 cursor-pointer bg-black/95"
+        style={{ touchAction: "manipulation" }}
         onClick={onClose}
+        onPointerUp={(e) => {
+          if (e.target === e.currentTarget) onClose();
+        }}
         aria-label="Zapri galerijo"
       />
 
@@ -57,6 +66,8 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
         <button
           type="button"
           onClick={onClose}
+          onPointerUp={(e) => e.stopPropagation()}
+          style={{ touchAction: "manipulation" }}
           className="pointer-events-auto absolute top-6 right-6 z-20 flex cursor-pointer items-center gap-2 border border-bone/40 bg-ink/60 px-5 py-3 text-xs uppercase tracking-[0.25em] text-bone transition-colors hover:bg-bone hover:text-ink"
         >
           <X className="h-4 w-4" />
@@ -98,7 +109,11 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
               initialScale={1}
               minScale={1}
               maxScale={5}
-              doubleClick={{ mode: "toggle", step: 1.6 }}
+              doubleClick={
+                isTouchDevice()
+                  ? { disabled: true }
+                  : { mode: "toggle", step: 1.6 }
+              }
               wheel={{ step: 0.12 }}
               pinch={{ step: 5 }}
               panning={{ disabled: !zoomed }}

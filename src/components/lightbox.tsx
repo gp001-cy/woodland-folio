@@ -17,24 +17,24 @@ interface ZoomableImageProps {
   src: string;
   alt: string;
   zoomed: boolean;
-  transformOrigin: string;
-  setTransformOrigin: (origin: string) => void;
   onClose?: () => void;
   onPrev?: () => void;
   onNext?: () => void;
   scaleRef: React.MutableRefObject<number>;
+  stateRef: React.MutableRefObject<{ scale: number; x: number; y: number }>;
 }
+
+const ZOOM_TARGET = 2.5;
 
 function ZoomableImage({
   src,
   alt,
   zoomed,
-  transformOrigin,
-  setTransformOrigin,
   onClose,
   onPrev,
   onNext,
   scaleRef,
+  stateRef,
 }: ZoomableImageProps) {
   const { setTransform } = useControls();
 
@@ -60,22 +60,28 @@ function ZoomableImage({
       onClick={(e) => e.stopPropagation()}
       onPointerDown={(e) => e.stopPropagation()}
       onDoubleClick={(e) => {
+        // Zoom out: recenter cleanly.
         if (scaleRef.current > 1.01) {
-          setTransformOrigin("50% 50%");
-          setTransform(0, 0, 1);
-        } else {
-          const rect = e.currentTarget.getBoundingClientRect();
-          const xPercent = rect.width
-            ? ((e.clientX - rect.left) / rect.width) * 100
-            : 50;
-          const yPercent = rect.height
-            ? ((e.clientY - rect.top) / rect.height) * 100
-            : 50;
-          setTransformOrigin(`${xPercent}% ${yPercent}%`);
-          setTransform(0, 0, 2.5);
+          setTransform(0, 0, 1, 200);
+          return;
         }
+        // Zoom in anchored exactly on the tapped point:
+        // keep the tapped wrapper coordinate stationary while scaling.
+        const wrapper = (e.currentTarget as HTMLElement).closest(
+          ".react-transform-wrapper",
+        ) as HTMLElement | null;
+        if (!wrapper) {
+          setTransform(0, 0, ZOOM_TARGET, 200);
+          return;
+        }
+        const rect = wrapper.getBoundingClientRect();
+        const px = e.clientX - rect.left;
+        const py = e.clientY - rect.top;
+        const { scale, x, y } = stateRef.current;
+        const k = ZOOM_TARGET / (scale || 1);
+        setTransform(px - (px - x) * k, py - (py - y) * k, ZOOM_TARGET, 200);
       }}
-      style={{ touchAction: "none", transformOrigin }}
+      style={{ touchAction: "none" }}
       className="pointer-events-auto inline-flex max-h-[88vh] max-w-[92vw] items-center justify-center"
     >
       <img
@@ -90,16 +96,18 @@ function ZoomableImage({
   );
 }
 
+
 export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxProps) {
   const scaleRef = useRef(1);
+  const stateRef = useRef({ scale: 1, x: 0, y: 0 });
   const [zoomed, setZoomed] = useState(false);
-  const [transformOrigin, setTransformOrigin] = useState("50% 50%");
 
   useEffect(() => {
     scaleRef.current = 1;
+    stateRef.current = { scale: 1, x: 0, y: 0 };
     setZoomed(false);
-    setTransformOrigin("50% 50%");
   }, [src]);
+
 
   useEffect(() => {
     if (!open) return;
@@ -189,36 +197,36 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
               pinch={{ step: 5 }}
               panning={{ disabled: !zoomed }}
               centerOnInit
-              onPinchStart={() => setTransformOrigin("50% 50%")}
               onTransform={(ref, state) => {
                 scaleRef.current = state.scale;
+                stateRef.current = {
+                  scale: state.scale,
+                  x: state.positionX,
+                  y: state.positionY,
+                };
                 const isZoomed = state.scale > 1.01;
                 setZoomed(isZoomed);
-                if (!isZoomed) {
-                  setTransformOrigin("50% 50%");
-                  if (state.positionX !== 0 || state.positionY !== 0) {
-                    ref.setTransform(0, 0, 1);
-                  }
+                if (!isZoomed && (state.positionX !== 0 || state.positionY !== 0)) {
+                  ref.setTransform(0, 0, 1, 0);
                 }
               }}
             >
               <TransformComponent
                 wrapperClass="!pointer-events-none !h-full !w-full"
                 contentClass="!pointer-events-none !h-full !w-full !flex !items-center !justify-center"
-                contentStyle={{ transformOrigin }}
               >
                 <ZoomableImage
                   src={src}
                   alt={alt}
                   zoomed={zoomed}
-                  transformOrigin={transformOrigin}
-                  setTransformOrigin={setTransformOrigin}
                   onClose={onClose}
                   onPrev={onPrev}
                   onNext={onNext}
                   scaleRef={scaleRef}
+                  stateRef={stateRef}
                 />
               </TransformComponent>
+
             </TransformWrapper>
           </motion.div>
         </AnimatePresence>

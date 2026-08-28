@@ -108,12 +108,20 @@ function Home() {
       {/* BIG IMAGE */}
       <FadeInSection as="section" className="relative h-[70vh] w-full overflow-hidden md:h-[95vh]">
         <img
-          src={bigImageAsset.url}
+          src={mobileBigImageAsset.url}
           alt="Vgradna garderoba po meri"
           width={1920}
           height={1200}
           loading="lazy"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover md:hidden"
+        />
+        <img
+          src={desktopBigImageAsset.url}
+          alt="Pisalna miza in omare po meri"
+          width={1920}
+          height={1200}
+          loading="lazy"
+          className="hidden h-full w-full object-cover md:block"
         />
       </FadeInSection>
 

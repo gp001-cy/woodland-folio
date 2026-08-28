@@ -45,7 +45,7 @@ function ZoomableImage({
         if (zoomed) return;
         const absX = Math.abs(info.offset.x);
         const absY = Math.abs(info.offset.y);
-        if (absY > absX && info.offset.y > 80) {
+        if (absY > absX && absY > 80) {
           onClose?.();
         } else if (absX > absY && (info.offset.x < -50 || info.velocity.x < -500)) {
           onNext?.();

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { FadeInSection } from "@/components/fade-in-section";
-import wide1 from "@/assets/wide-1.jpg";
+import workshopImageAsset from "@/assets/image-8.png.asset.json";
 
 export const Route = createFileRoute("/o-nas")({
   head: () => ({
@@ -45,7 +45,7 @@ function About() {
 
       <FadeInSection as="section" className="relative h-[60vh] w-full overflow-hidden md:h-[80vh]">
         <img
-          src={wide1}
+          src={workshopImageAsset.url}
           alt="Delavnica"
           width={1920}
           height={1080}

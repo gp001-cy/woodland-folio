@@ -4,10 +4,9 @@ import { FadeInSection } from "@/components/fade-in-section";
 import { ImageGallery } from "@/components/image-gallery";
 import { MobileReveal } from "@/components/mobile-reveal";
 
-
-import wide1 from "@/assets/wide-1.jpg";
 import mobileBigImageAsset from "@/assets/IMG_3813.jpeg.asset.json";
 import desktopBigImageAsset from "@/assets/IMG_9642-2.jpeg.asset.json";
+import workshopImageAsset from "@/assets/image-8.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
@@ -69,7 +68,7 @@ function Home() {
       {/* Full-width image break */}
       <FadeInSection as="section" className="relative h-[60vh] w-full overflow-hidden md:h-[85vh]">
         <img
-          src={wide1}
+          src={workshopImageAsset.url}
           alt="Delavnica Šetina"
           width={1920}
           height={1080}

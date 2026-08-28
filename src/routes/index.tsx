@@ -68,7 +68,7 @@ function Home() {
       {/* Full-width image break */}
       <FadeInSection as="section" className="relative h-[60vh] w-full overflow-hidden md:h-[85vh]">
         <img
-          src={wide1}
+          src={workshopImageAsset.url}
           alt="Delavnica Šetina"
           width={1920}
           height={1080}

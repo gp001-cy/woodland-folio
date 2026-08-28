@@ -93,10 +93,12 @@ function ZoomableImage({
 export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxProps) {
   const scaleRef = useRef(1);
   const [zoomed, setZoomed] = useState(false);
+  const [transformOrigin, setTransformOrigin] = useState("50% 50%");
 
   useEffect(() => {
     scaleRef.current = 1;
     setZoomed(false);
+    setTransformOrigin("50% 50%");
   }, [src]);
 
   useEffect(() => {

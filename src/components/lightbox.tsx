@@ -12,6 +12,11 @@ interface LightboxProps {
   onNext?: () => void;
 }
 
+function isTouchDevice() {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(hover: none)").matches || window.innerWidth < 768;
+}
+
 export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxProps) {
   const scaleRef = useRef(1);
   const [zoomed, setZoomed] = useState(false);

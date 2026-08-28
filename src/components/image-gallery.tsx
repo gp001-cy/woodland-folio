@@ -5,8 +5,7 @@ import { cn } from "@/lib/utils";
 
 const IMAGES = ["/IMG_9640.jpeg", "/IMG_9636.jpeg", "/IMG_8680.jpeg"];
 const MOBILE_IMAGES = ["/IMG_8749.jpeg", "/IMG_8872.jpeg", "/IMG_9455.jpeg"];
-const DESKTOP_INTERVAL = 1850;
-const MOBILE_INTERVAL = 1800;
+const INTERVAL = 2000;
 const SWIPE_THRESHOLD = 50;
 const CLICK_DRAG_THRESHOLD = 10;
 
@@ -29,11 +28,9 @@ export function ImageGallery() {
   );
 
   useEffect(() => {
-    if (dragging || lightboxOpen) return;
-    const delay = window.innerWidth < 768 ? MOBILE_INTERVAL : DESKTOP_INTERVAL;
-    const id = setTimeout(next, delay);
-    return () => clearTimeout(id);
-  }, [index, dragging, lightboxOpen, next]);
+    const id = setInterval(next, INTERVAL);
+    return () => clearInterval(id);
+  }, [next]);
 
   const onPointerDown = (e: React.PointerEvent) => {
     startX.current = e.clientX;

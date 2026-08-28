@@ -129,8 +129,7 @@ function Home() {
         <FadeInSection className="container-page">
           <blockquote className="mx-auto max-w-5xl text-center">
             <p className="font-display text-4xl font-light leading-[1.05] tracking-tight md:text-7xl">
-              <span className="text-beige-deep">„</span>Les si zapomni vse —
-              roko, ki ga je obdelala, in dom, v katerega je odšel.<span className="text-beige-deep">”</span>
+              <span className="text-beige-deep">„</span>Dobr zgleda.<span className="text-beige-deep">”</span>
             </p>
             <footer className="mt-10 text-xs uppercase tracking-[0.3em] text-muted-foreground">
               — Matej Šetina

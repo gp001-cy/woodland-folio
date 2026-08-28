@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 const IMAGES = ["/IMG_9640.jpeg", "/IMG_9636.jpeg", "/IMG_8680.jpeg"];
 const MOBILE_IMAGES = ["/IMG_8749.jpeg", "/IMG_8872.jpeg", "/IMG_9455.jpeg"];
-const INTERVAL = 2300;
+const INTERVAL = 1850;
 const SWIPE_THRESHOLD = 50;
 const CLICK_DRAG_THRESHOLD = 10;
 

@@ -17,6 +17,8 @@ interface ZoomableImageProps {
   src: string;
   alt: string;
   zoomed: boolean;
+  transformOrigin: string;
+  setTransformOrigin: (origin: string) => void;
   onClose?: () => void;
   onPrev?: () => void;
   onNext?: () => void;
@@ -27,6 +29,8 @@ function ZoomableImage({
   src,
   alt,
   zoomed,
+  transformOrigin,
+  setTransformOrigin,
   onClose,
   onPrev,
   onNext,
@@ -55,14 +59,23 @@ function ZoomableImage({
       }}
       onClick={(e) => e.stopPropagation()}
       onPointerDown={(e) => e.stopPropagation()}
-      onDoubleClick={() => {
+      onDoubleClick={(e) => {
         if (scaleRef.current > 1.01) {
+          setTransformOrigin("50% 50%");
           setTransform(0, 0, 1);
         } else {
+          const rect = e.currentTarget.getBoundingClientRect();
+          const xPercent = rect.width
+            ? ((e.clientX - rect.left) / rect.width) * 100
+            : 50;
+          const yPercent = rect.height
+            ? ((e.clientY - rect.top) / rect.height) * 100
+            : 50;
+          setTransformOrigin(`${xPercent}% ${yPercent}%`);
           setTransform(0, 0, 2.5);
         }
       }}
-      style={{ touchAction: "none" }}
+      style={{ touchAction: "none", transformOrigin }}
       className="pointer-events-auto inline-flex max-h-[88vh] max-w-[92vw] items-center justify-center"
     >
       <img
@@ -80,10 +93,12 @@ function ZoomableImage({
 export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxProps) {
   const scaleRef = useRef(1);
   const [zoomed, setZoomed] = useState(false);
+  const [transformOrigin, setTransformOrigin] = useState("50% 50%");
 
   useEffect(() => {
     scaleRef.current = 1;
     setZoomed(false);
+    setTransformOrigin("50% 50%");
   }, [src]);
 
   useEffect(() => {
@@ -182,11 +197,14 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
               <TransformComponent
                 wrapperClass="!pointer-events-none !h-full !w-full"
                 contentClass="!pointer-events-none !h-full !w-full !flex !items-center !justify-center"
+                contentStyle={{ transformOrigin }}
               >
                 <ZoomableImage
                   src={src}
                   alt={alt}
                   zoomed={zoomed}
+                  transformOrigin={transformOrigin}
+                  setTransformOrigin={setTransformOrigin}
                   onClose={onClose}
                   onPrev={onPrev}
                   onNext={onNext}

@@ -131,7 +131,7 @@ export const categories: Category[] = [
     n: "05",
     title: "Postelje",
     description:
-      "Postelja po meri pomeni pravo velikost, pravo višino in zgradbo, ki ne škripa. Vzglavja oblazinimo ali izdelamo iz masivnega lesa, pod ležiščem pa po želji skrijemo prostoren predal za shranjevanje.",
+      "Postelja po meri pomeni pravo velikost, pravo višino in zgradbo, ki ne škripa. Vzglavja oblazinimo ali izdelamo iz lesa, pod ležiščem pa po želji skrijemo prostoren predal za shranjevanje.",
     coverImage: `${IK}/Postelje/naslv%20postleja.jpeg`,
     gallery: [
       { src: `${IK}/Postelje/naslv%20postleja.jpeg`, alt: "Postelja po meri — naslovna slika" },
@@ -146,9 +146,9 @@ export const categories: Category[] = [
   {
     id: "dnevne-otroske-sobe",
     n: "06",
-    title: "Pohištvo za dnevne in otroške sobe",
+    title: "Pohištvo za dnevne sobe",
     description:
-      "Za dnevne in otroške sobe izdelujemo pohištvo, ki raste z družino — TV omarice, knjižne stene, pisalne mize in shrambne rešitve, ki so trdne, varne in dovolj prilagodljive za spreminjajoče se potrebe.",
+      "Za dnevne sobe izdelujemo pohištvo, ki raste z družino — TV omarice, knjižne stene, pisalne mize in shrambne rešitve, ki so trdne, varne in dovolj prilagodljive za spreminjajoče se potrebe.",
     coverImage: `${IK}/naslovdnevne.jpeg`,
     gallery: [
       { src: project6, alt: "Pohištvo za dnevno sobo po meri" },
@@ -173,22 +173,6 @@ export const categories: Category[] = [
       { src: hero2, alt: "Masivne lesene stopnice v hiši" },
       { src: project3, alt: "Stopnišče z vgradno shrambo" },
       { src: hero5, alt: "Ročna obdelava stopniške plošče" },
-    ],
-  },
-  {
-    id: "3d-izrisi",
-    n: "08",
-    title: "3D izrisi",
-    description:
-      "Preden se dotaknemo lesa, projekt vidite v 3D. Izris pokaže razmerja, materiale in barve v vašem prostoru — tako se odločitve sprejemajo mirno in brez presenečenj pri montaži.",
-    coverImage: project4,
-    gallery: [
-      { src: project4, alt: "3D izris pohištva po meri" },
-      { src: project1, alt: "Vizualizacija kuhinje pred izdelavo" },
-      { src: hero4, alt: "3D pogled na kuhinjski prostor" },
-      { src: wide2, alt: "Vizualizacija kopalniškega pohištva" },
-      { src: project6, alt: "3D načrt dnevne sobe" },
-      { src: hero1, alt: "Tehnični izris pohištva po meri" },
     ],
   },
 ];

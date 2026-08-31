@@ -69,7 +69,7 @@ function Home() {
       <FadeInSection as="section" className="relative h-[60vh] w-full overflow-hidden md:h-[85vh]">
         <img
           src={workshopImageAsset.url}
-          alt="Delavnica Šetina"
+          alt="Mizarstvo Šetina logotip"
           width={1920}
           height={1080}
           loading="lazy"

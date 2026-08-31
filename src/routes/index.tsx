@@ -66,14 +66,14 @@ function Home() {
 
 
       {/* Full-width image break */}
-      <FadeInSection as="section" className="relative h-[60vh] w-full overflow-hidden md:h-[85vh]">
+      <FadeInSection as="section" className="relative aspect-square w-full overflow-hidden md:aspect-auto md:h-[85vh]">
         <img
           src={workshopImageAsset.url}
           alt="Mizarstvo Šetina logotip"
           width={1920}
           height={1080}
           loading="lazy"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain md:object-cover"
         />
       </FadeInSection>
 

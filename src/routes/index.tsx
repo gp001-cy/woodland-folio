@@ -6,7 +6,7 @@ import { MobileReveal } from "@/components/mobile-reveal";
 
 import mobileBigImageAsset from "@/assets/IMG_3813.jpeg.asset.json";
 import desktopBigImageAsset from "@/assets/IMG_9642-2.jpeg.asset.json";
-import workshopImageAsset from "@/assets/image-8.png.asset.json";
+import workshopImageAsset from "@/assets/hwlogo.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
@@ -69,7 +69,7 @@ function Home() {
       <FadeInSection as="section" className="relative h-[60vh] w-full overflow-hidden md:h-[85vh]">
         <img
           src={workshopImageAsset.url}
-          alt="Delavnica Šetina"
+          alt="Mizarstvo Šetina logotip"
           width={1920}
           height={1080}
           loading="lazy"

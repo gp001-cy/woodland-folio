@@ -6,7 +6,7 @@ import { MobileReveal } from "@/components/mobile-reveal";
 
 import mobileBigImageAsset from "@/assets/IMG_3813.jpeg.asset.json";
 import desktopBigImageAsset from "@/assets/IMG_9642-2.jpeg.asset.json";
-import workshopImageAsset from "@/assets/image-8.png.asset.json";
+import workshopImageAsset from "@/assets/hwlogo.png.asset.json";
 
 
 export const Route = createFileRoute("/")({

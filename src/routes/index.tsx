@@ -28,7 +28,7 @@ const REVIEWS = [
     place: "Ljubljana - Bežigrad",
   },
   {
-    text: "Znali so prisluhniti našim željam in predlagali pametne izboljšave, na katere sami nismo pomislili.",
+    text: "Upoštevali so naše želje in predlagali pametne izboljšave, na katere sami nismo pomislili.",
     author: "Leon B.",
     place: "Ljubljana - Šiška",
   },
@@ -54,7 +54,7 @@ function Home() {
         <div className="container-page grid gap-12 md:grid-cols-12 md:gap-16">
           <div className="md:col-span-4">
             <p className="eyebrow">Filozofija</p>
-            <h2 className="h-section mt-4 max-w-sm">Poslušamo, svetujemo, ustvarjamo</h2>
+            <h2 className="h-section mt-4 max-w-sm">Poslušamo, svetujemo, ustvarjamo.</h2>
           </div>
           <div className="md:col-span-8">
             <p className="text-base leading-relaxed text-foreground/80 md:text-lg max-w-3xl">

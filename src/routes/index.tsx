@@ -108,24 +108,23 @@ function Home() {
         </div>
       </section>
 
-      {/* BIG IMAGE */}
+      {/* VIDEO */}
       <FadeInSection as="section" className="relative h-[70vh] w-full overflow-hidden md:h-[95vh]">
-        <img
-          src={mobileBigImageAsset.url}
-          alt="Vgradna garderoba po meri"
-          width={1920}
-          height={1200}
-          loading="lazy"
-          className="h-full w-full object-cover md:hidden"
-        />
-        <img
-          src={desktopBigImageAsset.url}
-          alt="Pisalna miza in omare po meri"
-          width={1920}
-          height={1200}
-          loading="lazy"
-          className="hidden h-full w-full object-cover md:block"
-        />
+        <button
+          type="button"
+          onClick={() => setVideoOpen(true)}
+          aria-label="Odpri video v celozaslonskem načinu"
+          className="block h-full w-full cursor-pointer"
+        >
+          <video
+            src={VIDEO_URL}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="pointer-events-none h-full w-full object-cover"
+          />
+        </button>
       </FadeInSection>
 
       {/* CLOSING QUOTE */}

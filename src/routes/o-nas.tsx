@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { FadeInSection } from "@/components/fade-in-section";
-import workshopImageAsset from "@/assets/image-8.png.asset.json";
+const WORKSHOP_IMAGE_URL =
+  "https://ik.imagekit.io/b8gd4wfofi/Gemini_Generated_Image_xp91e2xp91e2xp91-modified.jfif";
 
 export const Route = createFileRoute("/o-nas")({
   head: () => ({
@@ -45,7 +46,7 @@ function About() {
 
       <FadeInSection as="section" className="relative h-[60vh] w-full overflow-hidden md:h-[80vh]">
         <img
-          src={workshopImageAsset.url}
+          src={WORKSHOP_IMAGE_URL}
           alt="Delavnica"
           width={1920}
           height={1080}

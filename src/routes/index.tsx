@@ -149,6 +149,13 @@ function Home() {
           </div>
         </FadeInSection>
       </section>
+
+      <Lightbox
+        src={VIDEO_URL}
+        alt="Mizarstvo Šetina — video"
+        open={videoOpen}
+        onClose={() => setVideoOpen(false)}
+      />
     </SiteLayout>
   );
 }

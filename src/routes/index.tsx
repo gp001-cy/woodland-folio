@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { FadeInSection } from "@/components/fade-in-section";
@@ -44,6 +44,31 @@ const REVIEWS = [
 
 function Home() {
   const [videoOpen, setVideoOpen] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  // Play the video only while it is visible in the viewport.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (typeof IntersectionObserver === "undefined") {
+      video.play().catch(() => {});
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(video);
+    return () => io.disconnect();
+  }, []);
 
   return (
     <SiteLayout>
@@ -115,12 +140,12 @@ function Home() {
           type="button"
           onClick={() => setVideoOpen(true)}
           aria-label="Odpri video v celozaslonskem načinu"
-          className="mx-auto block w-full max-w-xs cursor-pointer overflow-hidden rounded-xl sm:max-w-sm"
+          className="block w-full cursor-pointer overflow-hidden rounded-none sm:mx-auto sm:max-w-sm sm:rounded-xl"
         >
           <span className="block aspect-[9/16] w-full">
             <video
+              ref={videoRef}
               src={VIDEO_URL}
-              autoPlay
               muted
               loop
               playsInline

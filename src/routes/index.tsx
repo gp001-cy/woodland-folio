@@ -115,9 +115,9 @@ function Home() {
           type="button"
           onClick={() => setVideoOpen(true)}
           aria-label="Odpri video v celozaslonskem načinu"
-          className="mx-auto block w-full max-w-2xl cursor-pointer overflow-hidden rounded-lg"
+          className="mx-auto block w-full max-w-xs cursor-pointer overflow-hidden rounded-xl sm:max-w-sm"
         >
-          <span className="block aspect-video w-full">
+          <span className="block aspect-[9/16] w-full">
             <video
               src={VIDEO_URL}
               autoPlay

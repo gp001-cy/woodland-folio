@@ -8,7 +8,8 @@ import { Lightbox } from "@/components/lightbox";
 
 import workshopImageAsset from "@/assets/hwlogo.png.asset.json";
 
-const VIDEO_URL = "https://ik.imagekit.io/b8gd4wfofi/IMG_8758.mp4";
+const VIDEO_URL =
+  "https://ik.imagekit.io/b8gd4wfofi/IMG_8758.mp4?tr=f-webm,q-80";
 
 
 export const Route = createFileRoute("/")({

@@ -109,21 +109,23 @@ function Home() {
       </section>
 
       {/* VIDEO */}
-      <FadeInSection as="section" className="relative h-[70vh] w-full overflow-hidden md:h-[95vh]">
+      <FadeInSection as="section" className="w-full">
         <button
           type="button"
           onClick={() => setVideoOpen(true)}
           aria-label="Odpri video v celozaslonskem načinu"
-          className="block h-full w-full cursor-pointer"
+          className="mx-auto block w-full max-w-2xl cursor-pointer overflow-hidden rounded-lg"
         >
-          <video
-            src={VIDEO_URL}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="pointer-events-none h-full w-full object-cover"
-          />
+          <span className="block aspect-video w-full">
+            <video
+              src={VIDEO_URL}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="pointer-events-none h-full w-full object-cover"
+            />
+          </span>
         </button>
       </FadeInSection>
 

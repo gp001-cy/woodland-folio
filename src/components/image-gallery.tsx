@@ -3,8 +3,16 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Lightbox } from "@/components/lightbox";
 import { cn } from "@/lib/utils";
 
-const IMAGES = ["/IMG_9640.jpeg", "/IMG_9636.jpeg", "/IMG_8680.jpeg"];
-const MOBILE_IMAGES = ["/IMG_8749.jpeg", "/IMG_8872.jpeg", "/IMG_9455.jpeg"];
+const IMAGES = [
+  "/IMG_9640.jpeg",
+  "/IMG_9636.jpeg",
+  "https://ik.imagekit.io/b8gd4wfofi/VgradneOmare/naslov%202.jpeg?updatedAt=1787872493141",
+];
+const MOBILE_IMAGES = [
+  "/IMG_8749.jpeg",
+  "/IMG_8872.jpeg",
+  "https://ik.imagekit.io/b8gd4wfofi/VgradneOmare/naslov%202.jpeg?updatedAt=1787872493141",
+];
 const INTERVAL = 2000;
 const SWIPE_THRESHOLD = 50;
 const CLICK_DRAG_THRESHOLD = 10;

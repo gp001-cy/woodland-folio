@@ -128,6 +128,7 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
   if (!open || !src) return null;
 
   const hasNav = Boolean(onPrev || onNext);
+  const isVideo = /\.mp4(\?|#|$)/i.test(src);
 
   return (
     <div
@@ -187,6 +188,21 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="pointer-events-none h-full w-full"
           >
+            {isVideo ? (
+              <div className="pointer-events-none flex h-full w-full items-center justify-center">
+                <video
+                  key={src}
+                  src={src}
+                  controls
+                  autoPlay
+                  loop
+                  playsInline
+                  onClick={(e) => e.stopPropagation()}
+                  onPointerDown={(e) => e.stopPropagation()}
+                  className="pointer-events-auto max-h-[88vh] w-auto max-w-[92vw]"
+                />
+              </div>
+            ) : (
             <TransformWrapper
               key={src}
               initialScale={1}
@@ -228,6 +244,7 @@ export function Lightbox({ src, alt, open, onClose, onPrev, onNext }: LightboxPr
               </TransformComponent>
 
             </TransformWrapper>
+            )}
           </motion.div>
         </AnimatePresence>
       </div>

@@ -45,7 +45,7 @@ function About() {
       </section>
 
       <FadeInSection as="section" className="relative h-auto w-full overflow-hidden md:h-[80vh]">
-        <div className="-mx-[10%] w-[120%] md:mx-0 md:w-full">
+        <div className="-mx-[22%] w-[144%] md:mx-0 md:w-full">
           <img
             src={WORKSHOP_IMAGE_URL}
             alt="Delavnica"

@@ -1,12 +1,14 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { FadeInSection } from "@/components/fade-in-section";
 import { ImageGallery } from "@/components/image-gallery";
 import { MobileReveal } from "@/components/mobile-reveal";
+import { Lightbox } from "@/components/lightbox";
 
-import mobileBigImageAsset from "@/assets/IMG_3813.jpeg.asset.json";
-import desktopBigImageAsset from "@/assets/IMG_9642-2.jpeg.asset.json";
 import workshopImageAsset from "@/assets/hwlogo.png.asset.json";
+
+const VIDEO_URL = "https://ik.imagekit.io/b8gd4wfofi/IMG_8758.mp4";
 
 
 export const Route = createFileRoute("/")({
@@ -40,6 +42,8 @@ const REVIEWS = [
 ];
 
 function Home() {
+  const [videoOpen, setVideoOpen] = useState(false);
+
   return (
     <SiteLayout>
       {/* HERO — galerija */}
@@ -104,24 +108,23 @@ function Home() {
         </div>
       </section>
 
-      {/* BIG IMAGE */}
+      {/* VIDEO */}
       <FadeInSection as="section" className="relative h-[70vh] w-full overflow-hidden md:h-[95vh]">
-        <img
-          src={mobileBigImageAsset.url}
-          alt="Vgradna garderoba po meri"
-          width={1920}
-          height={1200}
-          loading="lazy"
-          className="h-full w-full object-cover md:hidden"
-        />
-        <img
-          src={desktopBigImageAsset.url}
-          alt="Pisalna miza in omare po meri"
-          width={1920}
-          height={1200}
-          loading="lazy"
-          className="hidden h-full w-full object-cover md:block"
-        />
+        <button
+          type="button"
+          onClick={() => setVideoOpen(true)}
+          aria-label="Odpri video v celozaslonskem načinu"
+          className="block h-full w-full cursor-pointer"
+        >
+          <video
+            src={VIDEO_URL}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="pointer-events-none h-full w-full object-cover"
+          />
+        </button>
       </FadeInSection>
 
       {/* CLOSING QUOTE */}
@@ -146,6 +149,13 @@ function Home() {
           </div>
         </FadeInSection>
       </section>
+
+      <Lightbox
+        src={VIDEO_URL}
+        alt="Mizarstvo Šetina — video"
+        open={videoOpen}
+        onClose={() => setVideoOpen(false)}
+      />
     </SiteLayout>
   );
 }

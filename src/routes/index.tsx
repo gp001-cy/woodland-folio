@@ -1,12 +1,14 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { FadeInSection } from "@/components/fade-in-section";
 import { ImageGallery } from "@/components/image-gallery";
 import { MobileReveal } from "@/components/mobile-reveal";
+import { Lightbox } from "@/components/lightbox";
 
-import mobileBigImageAsset from "@/assets/IMG_3813.jpeg.asset.json";
-import desktopBigImageAsset from "@/assets/IMG_9642-2.jpeg.asset.json";
 import workshopImageAsset from "@/assets/hwlogo.png.asset.json";
+
+const VIDEO_URL = "https://ik.imagekit.io/b8gd4wfofi/IMG_8758.mp4";
 
 
 export const Route = createFileRoute("/")({
@@ -40,6 +42,8 @@ const REVIEWS = [
 ];
 
 function Home() {
+  const [videoOpen, setVideoOpen] = useState(false);
+
   return (
     <SiteLayout>
       {/* HERO — galerija */}

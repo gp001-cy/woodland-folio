@@ -44,14 +44,14 @@ function About() {
         </div>
       </section>
 
-      <FadeInSection as="section" className="relative h-[60vh] w-full overflow-hidden md:h-[80vh]">
+      <FadeInSection as="section" className="relative h-auto w-full overflow-hidden md:h-[80vh]">
         <img
           src={WORKSHOP_IMAGE_URL}
           alt="Delavnica"
           width={1920}
           height={1080}
           loading="lazy"
-          className="h-full w-full object-cover"
+          className="h-auto w-full object-contain md:h-full md:object-cover"
         />
       </FadeInSection>
 

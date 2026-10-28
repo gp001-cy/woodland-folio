@@ -56,6 +56,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 import ogImageAsset from "../assets/onlynatler-2.png.asset.json";
 
+// TanStack's errorComponent type requires an async-capable component, so a
+// plain function fails the typecheck ("missing _result, $$typeof").
+ErrorComponent.preload = () => Promise.resolve();
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [

@@ -9,26 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as PonudbaRouteImport } from './routes/ponudba'
-import { Route as ONasRouteImport } from './routes/o-nas'
-import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as KontaktRouteImport } from './routes/kontakt'
+import { Route as ONasRouteImport } from './routes/o-nas'
+import { Route as PonudbaRouteImport } from './routes/ponudba'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as GalerijaIdRouteImport } from './routes/galerija.$id'
 
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PonudbaRoute = PonudbaRouteImport.update({
-  id: '/ponudba',
-  path: '/ponudba',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ONasRoute = ONasRouteImport.update({
-  id: '/o-nas',
-  path: '/o-nas',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KontaktRoute = KontaktRouteImport.update({
@@ -36,9 +26,19 @@ const KontaktRoute = KontaktRouteImport.update({
   path: '/kontakt',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const ONasRoute = ONasRouteImport.update({
+  id: '/o-nas',
+  path: '/o-nas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PonudbaRoute = PonudbaRouteImport.update({
+  id: '/ponudba',
+  path: '/ponudba',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalerijaIdRoute = GalerijaIdRouteImport.update({
@@ -75,20 +75,10 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
-    | '/kontakt'
-    | '/o-nas'
-    | '/ponudba'
-    | '/sitemap.xml'
-    | '/galerija/$id'
+    '/' | '/kontakt' | '/o-nas' | '/ponudba' | '/sitemap.xml' | '/galerija/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
-    | '/kontakt'
-    | '/o-nas'
-    | '/ponudba'
-    | '/sitemap.xml'
-    | '/galerija/$id'
+    '/' | '/kontakt' | '/o-nas' | '/ponudba' | '/sitemap.xml' | '/galerija/$id'
   id:
     | '__root__'
     | '/'
@@ -110,25 +100,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ponudba': {
-      id: '/ponudba'
-      path: '/ponudba'
-      fullPath: '/ponudba'
-      preLoaderRoute: typeof PonudbaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/o-nas': {
-      id: '/o-nas'
-      path: '/o-nas'
-      fullPath: '/o-nas'
-      preLoaderRoute: typeof ONasRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kontakt': {
@@ -138,11 +114,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KontaktRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/o-nas': {
+      id: '/o-nas'
+      path: '/o-nas'
+      fullPath: '/o-nas'
+      preLoaderRoute: typeof ONasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ponudba': {
+      id: '/ponudba'
+      path: '/ponudba'
+      fullPath: '/ponudba'
+      preLoaderRoute: typeof PonudbaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/galerija/$id': {

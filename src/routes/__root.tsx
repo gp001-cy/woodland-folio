@@ -1,4 +1,5 @@
 import { createRootRouteWithContext, HeadContent, Outlet, Scripts, useRouter } from "@tanstack/react-router";
+import type { ErrorRouteComponent } from "@tanstack/react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
@@ -56,9 +57,6 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 import ogImageAsset from "../assets/onlynatler-2.png.asset.json";
 
-// TanStack's errorComponent type requires an async-capable component, so a
-// plain function fails the typecheck ("missing _result, $$typeof").
-ErrorComponent.preload = () => Promise.resolve();
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
@@ -90,7 +88,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
-  errorComponent: ErrorComponent,
+  errorComponent: ErrorComponent as unknown as ErrorRouteComponent,
 });
 
 function RootShell({ children }: { children: ReactNode }) {

@@ -55,7 +55,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-import ogImageAsset from "../assets/onlynatler-2.png.asset.json";
+
 
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
@@ -71,8 +71,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Mizarstvo Šetina" },
       { name: "twitter:description", content: "Mizarstvo Šetina izdeluje pohištvo po meri iz kvalitetnih materialov. Prilagajamo se vašim željam, meri prostora, skrbimo za funkcionalnost in udobje." },
-      { property: "og:image", content: ogImageAsset.url },
-      { name: "twitter:image", content: ogImageAsset.url },
+      { property: "og:image", content: "/onlynatler.png" },
+      { name: "twitter:image", content: "/onlynatler.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

@@ -6,7 +6,7 @@ import { ImageGallery } from "@/components/image-gallery";
 import { MobileReveal } from "@/components/mobile-reveal";
 import { Lightbox } from "@/components/lightbox";
 
-import workshopImageAsset from "@/assets/hwlogo.png.asset.json";
+
 
 const VIDEO_URL =
   "https://ik.imagekit.io/b8gd4wfofi/IMG_8758.mp4?tr=f-webm,q-80";
@@ -98,8 +98,8 @@ function Home() {
       {/* Full-width image break */}
       <FadeInSection as="section" className="relative aspect-square w-full overflow-hidden md:aspect-auto md:h-[85vh]">
         <img
-          src={workshopImageAsset.url}
-          alt="Mizarstvo Šetina logotip"
+          src="/hwlogo.png"
+          alt="Mizarstvo Šetina"
           width={1920}
           height={1080}
           loading="lazy"

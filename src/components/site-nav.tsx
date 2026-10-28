@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import logo from "@/assets/setina-antler.png.asset.json";
+
 
 const NAV = [
   { to: "/", label: "Domov" },
@@ -46,7 +46,7 @@ export function SiteNav() {
             className="flex min-w-0 items-center gap-3"
           >
             <img
-              src={logo.url}
+              src="/onlynatler.png"
               alt="Mizarstvo Šetina"
               width={70}
               height={48}

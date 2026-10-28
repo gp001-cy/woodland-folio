@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import logo from "@/assets/setina-logo.png.asset.json";
+
 
 export function SiteFooter() {
   return (
@@ -7,7 +7,7 @@ export function SiteFooter() {
       <div className="container-page grid gap-12 py-16 md:grid-cols-[1.5fr_1fr] md:gap-8 md:py-24">
         <div className="min-w-0">
           <img
-            src={logo.url}
+            src="/onlynatler.png"
             alt="Mizarstvo Šetina"
             width={72}
             height={48}
